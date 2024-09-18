@@ -3,6 +3,7 @@
 	import toast from 'svelte-french-toast';
 	import { enhance } from '$app/forms';
 	import { writable } from 'svelte/store';
+	import { browser } from '$app/environment';
     import { Breadcrumbs } from '@valiantlynx/svelte-ui';
     export let title;
     export let url;
@@ -60,15 +61,20 @@
 
 <h1 class="text-4xl font-bold text-center">{title}</h1>
 
+{#if browser}
+
 <div class="m-10">
 	<slot />
 </div>
 
 <slot name="more" />
 
+{/if}
+
+
+
+
 <form
-	action="/components/{url}?/save"
-	method="POST"
 	class="rounded-box p-10 items-center mt-3 bg-gradient-to-bl from-purple-500 to-pink-600 text-white mx-7"
 	use:enhance={saveData}
 >
