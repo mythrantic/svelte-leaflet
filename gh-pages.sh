@@ -20,6 +20,10 @@ git fetch origin
 echo "Resetting branch to match the state of origin/main..."
 git reset --hard origin/working
 
+yarn
+
+yarn build
+
 find . -mindepth 1 -not -path "./build*" -not -path "./.git*" -not -name ".env" -exec rm -rf {} + 2>/dev/null \
 && (mv build/* build/.* . 2>/dev/null || true) \
 && rmdir build 2>/dev/null
