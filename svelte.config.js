@@ -5,8 +5,8 @@ import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 import dotenv from 'dotenv'
 dotenv.config()
 
-let {PUBLIC_DEPLOY_TARGET} = process.env
-const deployTarget = PUBLIC_DEPLOY_TARGET || 'auto'; // Default to 'auto'
+let {DEPLOY_TARGET} = process.env
+const deployTarget = DEPLOY_TARGET || 'auto'; // Default to 'auto'
 const dev = process.argv.includes('dev');
 
 
