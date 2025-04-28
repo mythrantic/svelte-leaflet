@@ -74,7 +74,7 @@
 		"autoprefixer": "^10.4.16",
 		"dotenv": "^16.4.5",
 		"eslint": "^8.28.0",
-		"eslint-config-prettier": "^8.5.0",
+		"eslint-config-prettier": "^10.1.2",
 		"eslint-plugin-svelte": "^2.30.0",
 		"leaflet-routing-machine": "^3.2.12",
 		"postcss": "^8.4.31",
