@@ -96,6 +96,6 @@
 	"dependencies": {
 		"@valiantlynx/svelte-ui": "0.0.23",
 		"leaflet": "^1.9.4",
-		"leaflet.fullscreen": "^3.0.0"
+		"leaflet.fullscreen": "^4.0.0"
 	}
 }
