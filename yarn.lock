@@ -723,9 +723,9 @@
     undici "^5.28.3"
 
 "@sveltejs/package@^2.0.0":
-  version "2.4.1"
-  resolved "https://registry.yarnpkg.com/@sveltejs/package/-/package-2.4.1.tgz#700cdbdd9fb4e53a0eb9ccb8547a323f13254b8f"
-  integrity sha512-dFj78EMy8Vgqsj5Tv2rPuPmtpyqYiJDL1QGhWjK4xW3g77ffF26ovoNBHNg/NZG9ZdTUUDb4rov6We3gW1pamg==
+  version "2.5.0"
+  resolved "https://registry.yarnpkg.com/@sveltejs/package/-/package-2.5.0.tgz#10556cf4f4a2fa8df78d620c9c699ace361e3728"
+  integrity sha512-qpB91oWEraOXA4l1ldpGtMc/rLCthbf1ACw/1oroKxvT3sd2NXPd/+NLhIk5FCvd0IUSEZGYa86K+D94GWW2Zw==
   dependencies:
     chokidar "^4.0.3"
     kleur "^4.1.5"
