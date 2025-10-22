@@ -1,0 +1,53 @@
+<!-- svelte-leaflet-logo.svg -->
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background circle -->
+  <circle cx="100" cy="100" r="95" fill="#FF3E00" opacity="0.1"/>
+  
+  <!-- Leaflet leaf (green) -->
+  <g transform="translate(60, 50)">
+    <path d="M 40 0 Q 80 20, 80 60 Q 80 100, 40 120 Q 0 100, 0 60 Q 0 20, 40 0 Z" 
+          fill="#78C850" 
+          stroke="#4A7C2F" 
+          stroke-width="2"/>
+    <!-- Leaf vein -->
+    <path d="M 40 0 L 40 120" 
+          stroke="#4A7C2F" 
+          stroke-width="2" 
+          fill="none"/>
+    <path d="M 40 30 Q 60 35, 70 50" 
+          stroke="#4A7C2F" 
+          stroke-width="1.5" 
+          fill="none"/>
+    <path d="M 40 30 Q 20 35, 10 50" 
+          stroke="#4A7C2F" 
+          stroke-width="1.5" 
+          fill="none"/>
+    <path d="M 40 60 Q 60 65, 70 80" 
+          stroke="#4A7C2F" 
+          stroke-width="1.5" 
+          fill="none"/>
+    <path d="M 40 60 Q 20 65, 10 80" 
+          stroke="#4A7C2F" 
+          stroke-width="1.5" 
+          fill="none"/>
+  </g>
+  
+  <!-- Svelte flame (orange) -->
+  <g transform="translate(65, 90)">
+    <!-- Main flame -->
+    <path d="M 30 0 Q 50 10, 50 30 Q 50 45, 40 55 Q 35 50, 30 55 Q 20 50, 20 40 Q 20 25, 10 20 Q 15 10, 20 5 Q 25 0, 30 0 Z" 
+          fill="#FF3E00" 
+          stroke="#C72F00" 
+          stroke-width="1.5"/>
+    <!-- Inner flame highlight -->
+    <path d="M 30 10 Q 40 15, 40 28 Q 40 38, 32 45 Q 28 42, 25 45 Q 20 40, 20 30 Q 20 20, 25 15 Q 27 12, 30 10 Z" 
+          fill="#FFA000" 
+          opacity="0.8"/>
+  </g>
+  
+  <!-- Map pin marker accent (combines both themes) -->
+  <g transform="translate(95, 140)">
+    <circle cx="5" cy="5" r="8" fill="#FF3E00" stroke="#4A7C2F" stroke-width="2"/>
+    <circle cx="5" cy="5" r="3" fill="#78C850"/>
+  </g>
+</svg>
