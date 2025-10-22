@@ -6,7 +6,7 @@ import dotenv from 'dotenv'
 dotenv.config()
 
 let {DEPLOY_TARGET} = process.env
-const deployTarget = DEPLOY_TARGET || 'auto'; // Default to 'auto'
+const deployTarget = DEPLOY_TARGET || 'node'; // Default to 'auto'
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
