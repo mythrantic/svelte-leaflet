@@ -43,6 +43,7 @@
 	<!-- Prism.js JavaScript -->
 	<!-- Prism.js JavaScript -->
 	<!-- Prism.js JavaScript -->
+	<!-- Prism.js JavaScript -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
 	<!-- Prism.js theme CSS -->
 	<link

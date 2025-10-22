@@ -2,23 +2,27 @@
 	export let methods;
 </script>
 
-<h2 class="text-2xl font-semibold mb-4">Methods</h2>
-<table class="w-full">
-	<thead>
-		<tr>
-			<th class="border p-2">Name</th>
-			<th class="border p-2">Description</th>
-		</tr>
-	</thead>
-	<tbody>
-		{#each Object.entries(methods) as [methodName, methodDetails]}
+<h2 class="text-2xl font-bold mb-4 text-black mt-8">Methods</h2>
+<div class="overflow-x-auto">
+	<table class="w-full neobrutalism-card rounded-none bg-orange-500">
+		<thead class="bg-green-500">
 			<tr>
-				<td class="border p-2">{methodName}</td>
-				<td class="border p-2"
-					>{methodDetails.description}
-					<a href={methodDetails.link} target="_blank">More Info</a></td
-				>
+				<th class="border-4 border-black p-4 text-left text-black font-bold">Name</th>
+				<th class="border-4 border-black p-4 text-left text-black font-bold">Description</th>
 			</tr>
-		{/each}
-	</tbody>
-</table>
+		</thead>
+		<tbody>
+			{#each Object.entries(methods) as [methodName, methodDetails]}
+				<tr class="bg-white">
+					<td class="border-4 border-black p-4 text-black font-medium">{methodName}</td>
+					<td class="border-4 border-black p-4 text-black"
+						>{methodDetails.description}
+						<a href={methodDetails.link} target="_blank" class="text-black underline font-bold"
+							>More Info</a
+						></td
+					>
+				</tr>
+			{/each}
+		</tbody>
+	</table>
+</div>
