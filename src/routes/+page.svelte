@@ -42,6 +42,7 @@
 	<!-- Prism.js JavaScript -->
 	<!-- Prism.js JavaScript -->
 	<!-- Prism.js JavaScript -->
+	<!-- Prism.js JavaScript -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
 	<!-- Prism.js theme CSS -->
 	<link
@@ -59,23 +60,23 @@
 	<section class="p-16 bg-white">
 		<h2 class="text-4xl font-semibold text-center mb-12 text-black">Unleash the Power of Maps</h2>
 		<div class="grid md:grid-cols-3 gap-8 text-center">
-			<div
-				class="neobrutalism-card bg-orange-500 rounded-none p-10"
-			>
+			<div class="neobrutalism-card bg-orange-500 rounded-none p-10">
 				<span class="block text-3xl text-black font-bold mb-4">🌍 Dynamic</span>
-				<p class="text-black font-medium">Instantly visualize data with interactive and customizable maps.</p>
+				<p class="text-black font-medium">
+					Instantly visualize data with interactive and customizable maps.
+				</p>
 			</div>
-			<div
-				class="neobrutalism-card bg-green-500 rounded-none p-10"
-			>
+			<div class="neobrutalism-card bg-green-500 rounded-none p-10">
 				<span class="block text-3xl text-black font-bold mb-4">⚡ Efficient</span>
-				<p class="text-black font-medium">Highly optimized for speed and performance, keeping your app swift.</p>
+				<p class="text-black font-medium">
+					Highly optimized for speed and performance, keeping your app swift.
+				</p>
 			</div>
-			<div
-				class="neobrutalism-card bg-orange-500 rounded-none p-10"
-			>
+			<div class="neobrutalism-card bg-orange-500 rounded-none p-10">
 				<span class="block text-3xl text-black font-bold mb-4">🎨 Customizable</span>
-				<p class="text-black font-medium">Full control over styling and features to suit your application's design.</p>
+				<p class="text-black font-medium">
+					Full control over styling and features to suit your application's design.
+				</p>
 			</div>
 		</div>
 	</section>
@@ -88,8 +89,12 @@
 				<p class="text-lg mb-4 font-medium">
 					Begin with <code class="bg-black text-white px-2 py-1 border-2 border-black"
 						>npm install @valiantlynx/svelte-leaflet</code
-					>. Import <code class="bg-black text-white px-2 py-1 border-2 border-black">&lt;LeafletMap&gt;</code> and
-					<code class="bg-black text-white px-2 py-1 border-2 border-black">&lt;TileLayer&gt;</code> to create stunning maps.
+					>. Import
+					<code class="bg-black text-white px-2 py-1 border-2 border-black">&lt;LeafletMap&gt;</code
+					>
+					and
+					<code class="bg-black text-white px-2 py-1 border-2 border-black">&lt;TileLayer&gt;</code>
+					to create stunning maps.
 				</p>
 			</div>
 			<div class="max-w-md">
@@ -100,13 +105,16 @@
 						class="text-black underline font-bold hover:text-white">documentation</a
 					>. Learn how to utilize components like
 					<code class="bg-black text-white px-2 py-1 border-2 border-black">LeafletMap</code>
-					and <code class="bg-black text-white px-2 py-1 border-2 border-black">TileLayer</code> in your projects.
+					and <code class="bg-black text-white px-2 py-1 border-2 border-black">TileLayer</code> in your
+					projects.
 				</p>
 			</div>
 
 			<div class="w-full md:w-3/4">
 				<!-- snippet of code that will be displayed in the code snippet box, with syntax highlighting and copy button -->
-				<div class="mx-auto mt-14 bg-white border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] rounded-none overflow-hidden">
+				<div
+					class="mx-auto mt-14 bg-white border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] rounded-none overflow-hidden"
+				>
 					<div class="p-4 bg-green-500 border-b-4 border-black">
 						<div class="flex items-center justify-between">
 							<span class="text-black text-xl font-bold">Code Snippet</span>

@@ -6,24 +6,24 @@
 
 	import jsonData from './data.json';
 	const properties = {
-        position: {
-            type: "String",
-            default: "topright",
-            description: "Position."
-        },
-        options: {
-            type: "Object",
-            default: "undefined",
-            description: "Options."
-        }
-    };
+		position: {
+			type: 'String',
+			default: 'topright',
+			description: 'Position.'
+		},
+		options: {
+			type: 'Object',
+			default: 'undefined',
+			description: 'Options.'
+		}
+	};
 
-    const methods = {
-        getScaleControl: {
-            description: "Returns the underlying Leaflet Control.Scale object instance.",
-            link: "https://leafletjs.com/reference.html#control-scale"
-        }
-    };
+	const methods = {
+		getScaleControl: {
+			description: 'Returns the underlying Leaflet Control.Scale object instance.',
+			link: 'https://leafletjs.com/reference.html#control-scale'
+		}
+	};
 </script>
 
 <ComponentStructure title="Scale Control" url="scale-control" {jsonData}>

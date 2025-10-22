@@ -3,10 +3,10 @@
 	import toast from 'svelte-french-toast';
 	import { enhance } from '$app/forms';
 	import { writable } from 'svelte/store';
-    import { Breadcrumbs } from '@valiantlynx/svelte-ui';
-    export let title;
-    export let url;
-    export let jsonData;
+	import { Breadcrumbs } from '@valiantlynx/svelte-ui';
+	export let title;
+	export let url;
+	export let jsonData;
 
 	let contentData = writable(jsonData);
 
@@ -35,10 +35,10 @@
 
 	function updateContent() {
 		const data = getData(); // Get data from ValiantRichText
-		contentData.set(JSON.stringify(data)); 
+		contentData.set(JSON.stringify(data));
 	}
 
-    const crumbs = [
+	const crumbs = [
 		{
 			name: 'Home',
 			url: '/'
@@ -75,7 +75,11 @@
 	<ValiantRichText bind:initialData={$contentData} />
 
 	<input type="hidden" name="content_object" bind:value={$contentData} />
-	<button class="neobrutalism-btn bg-green-500 text-black px-6 py-3 rounded-none" disabled={loading} type="submit">
+	<button
+		class="neobrutalism-btn bg-green-500 text-black px-6 py-3 rounded-none"
+		disabled={loading}
+		type="submit"
+	>
 		Save
 	</button>
 </form>

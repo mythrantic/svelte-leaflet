@@ -42,7 +42,10 @@
 		<!-- Social Media Links -->
 		<div class="flex items-center space-x-4">
 			<!-- Componest button -->
-			<a href="/components" class="neobrutalism-btn bg-orange-500 text-black px-6 py-2 rounded-none">
+			<a
+				href="/components"
+				class="neobrutalism-btn bg-orange-500 text-black px-6 py-2 rounded-none"
+			>
 				Components
 			</a>
 			{#each socialLinks as { icon, url }}
@@ -62,9 +65,7 @@
 		<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 text-center">
 			<!-- Component Cards -->
 			{#each components as component}
-				<div
-					class="neobrutalism-card bg-green-500 rounded-none p-6"
-				>
+				<div class="neobrutalism-card bg-green-500 rounded-none p-6">
 					<a href={component.link} class="text-lg font-bold text-black hover:underline"
 						>{component.name}</a
 					>
@@ -102,7 +103,9 @@
 			<!-- More FAQ items -->
 			<div class="neobrutalism-card bg-white rounded-none">
 				<input type="radio" name="my-accordion" />
-				<div class="collapse-title text-xl font-bold text-black">How do I install Svelte-Leaflet?</div>
+				<div class="collapse-title text-xl font-bold text-black">
+					How do I install Svelte-Leaflet?
+				</div>
 				<div class="collapse-content">
 					<p class="text-black">
 						Install Svelte-Leaflet by running `npm install @valiantlynx/svelte-leaflet` in your

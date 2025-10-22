@@ -116,6 +116,7 @@
 		}
 	];
 </script>
+
 <div class="ml-4">
 	<Breadcrumbs {crumbs} />
 </div>
@@ -125,12 +126,18 @@
 	<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
 		{#each components as component}
 			<div class="neobrutalism-card bg-green-500 rounded-none">
-				<figure class="border-b-4 border-black"><img src="/logo.jpg" alt={component.name} /></figure>
+				<figure class="border-b-4 border-black">
+					<img src="/logo.jpg" alt={component.name} />
+				</figure>
 				<div class="p-6">
 					<h2 class="text-2xl font-bold text-black mb-2">{component.name}</h2>
 					<p class="text-black font-medium mb-4">{component.description}</p>
 					<div class="flex justify-end">
-						<a href={component.link} class="neobrutalism-btn bg-orange-500 text-black px-4 py-2 rounded-none">Learn More / code</a>
+						<a
+							href={component.link}
+							class="neobrutalism-btn bg-orange-500 text-black px-4 py-2 rounded-none"
+							>Learn More / code</a
+						>
 					</div>
 				</div>
 			</div>

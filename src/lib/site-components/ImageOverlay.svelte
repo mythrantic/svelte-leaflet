@@ -19,17 +19,15 @@
 		[1.17, 103.565],
 		[1.4836, 104.143]
 	];
-
-
 </script>
 
-	<div class="mb-4 h-96">
-		<LeafletMap options={mapOptions}>
-			<TileLayer url={tileUrl} options={tileLayerOptions} />
-			<ImageOverlay
-				imageUrl="/dpsri_70km_2021082110500000dBR.dpsri.png"
-				{bounds}
-				options={imageOverlayOptions}
-			/>
-		</LeafletMap>
-	</div>
+<div class="mb-4 h-96">
+	<LeafletMap options={mapOptions}>
+		<TileLayer url={tileUrl} options={tileLayerOptions} />
+		<ImageOverlay
+			imageUrl="/dpsri_70km_2021082110500000dBR.dpsri.png"
+			{bounds}
+			options={imageOverlayOptions}
+		/>
+	</LeafletMap>
+</div>

@@ -30,36 +30,36 @@ yarn add @valiantlynx/svelte-leaflet leaflet
 
 ```svelte
 <script>
-  import { LeafletMap, TileLayer, Marker, Popup } from '@valiantlynx/svelte-leaflet';
+	import { LeafletMap, TileLayer, Marker, Popup } from '@valiantlynx/svelte-leaflet';
 
-  const mapOptions = {
-    center: [51.505, -0.09],
-    zoom: 13
-  };
+	const mapOptions = {
+		center: [51.505, -0.09],
+		zoom: 13
+	};
 
-  const tileUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
-  const tileLayerOptions = {
-    maxZoom: 19,
-    attribution: '© OpenStreetMap contributors'
-  };
+	const tileUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+	const tileLayerOptions = {
+		maxZoom: 19,
+		attribution: '© OpenStreetMap contributors'
+	};
 </script>
 
 <div class="map-container">
-  <LeafletMap options={mapOptions}>
-    <TileLayer url={tileUrl} options={tileLayerOptions} />
-    <Marker latLng={[51.505, -0.09]}>
-      <Popup>
-        <p>Hello from London!</p>
-      </Popup>
-    </Marker>
-  </LeafletMap>
+	<LeafletMap options={mapOptions}>
+		<TileLayer url={tileUrl} options={tileLayerOptions} />
+		<Marker latLng={[51.505, -0.09]}>
+			<Popup>
+				<p>Hello from London!</p>
+			</Popup>
+		</Marker>
+	</LeafletMap>
 </div>
 
 <style>
-  .map-container {
-    height: 400px;
-    width: 100%;
-  }
+	.map-container {
+		height: 400px;
+		width: 100%;
+	}
 </style>
 ```
 
@@ -116,22 +116,22 @@ Don't forget to include Leaflet CSS in your app:
 
 ```svelte
 <script>
-  import { LeafletMap, TileLayer, Marker, Popup } from '@valiantlynx/svelte-leaflet';
+	import { LeafletMap, TileLayer, Marker, Popup } from '@valiantlynx/svelte-leaflet';
 
-  const locations = [
-    { lat: 51.505, lng: -0.09, name: 'Location 1' },
-    { lat: 51.515, lng: -0.1, name: 'Location 2' },
-    { lat: 51.525, lng: -0.11, name: 'Location 3' }
-  ];
+	const locations = [
+		{ lat: 51.505, lng: -0.09, name: 'Location 1' },
+		{ lat: 51.515, lng: -0.1, name: 'Location 2' },
+		{ lat: 51.525, lng: -0.11, name: 'Location 3' }
+	];
 </script>
 
 <LeafletMap options={{ center: [51.515, -0.1], zoom: 13 }}>
-  <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-  {#each locations as location}
-    <Marker latLng={[location.lat, location.lng]}>
-      <Popup>{location.name}</Popup>
-    </Marker>
-  {/each}
+	<TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+	{#each locations as location}
+		<Marker latLng={[location.lat, location.lng]}>
+			<Popup>{location.name}</Popup>
+		</Marker>
+	{/each}
 </LeafletMap>
 ```
 
@@ -139,26 +139,26 @@ Don't forget to include Leaflet CSS in your app:
 
 ```svelte
 <script>
-  import { LeafletMap, TileLayer, Circle, Polygon } from '@valiantlynx/svelte-leaflet';
+	import { LeafletMap, TileLayer, Circle, Polygon } from '@valiantlynx/svelte-leaflet';
 
-  const circleOptions = {
-    color: 'red',
-    fillColor: '#f03',
-    fillOpacity: 0.5,
-    radius: 500
-  };
+	const circleOptions = {
+		color: 'red',
+		fillColor: '#f03',
+		fillOpacity: 0.5,
+		radius: 500
+	};
 
-  const polygonPoints = [
-    [51.509, -0.08],
-    [51.503, -0.06],
-    [51.51, -0.047]
-  ];
+	const polygonPoints = [
+		[51.509, -0.08],
+		[51.503, -0.06],
+		[51.51, -0.047]
+	];
 </script>
 
 <LeafletMap options={{ center: [51.505, -0.09], zoom: 13 }}>
-  <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-  <Circle latLng={[51.508, -0.11]} options={circleOptions} />
-  <Polygon latLngs={polygonPoints} options={{ color: 'blue' }} />
+	<TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+	<Circle latLng={[51.508, -0.11]} options={circleOptions} />
+	<Polygon latLngs={polygonPoints} options={{ color: 'blue' }} />
 </LeafletMap>
 ```
 
@@ -166,28 +166,28 @@ Don't forget to include Leaflet CSS in your app:
 
 ```svelte
 <script>
-  import { LeafletMap, TileLayer, GeoJSON } from '@valiantlynx/svelte-leaflet';
+	import { LeafletMap, TileLayer, GeoJSON } from '@valiantlynx/svelte-leaflet';
 
-  const geojsonData = {
-    type: 'FeatureCollection',
-    features: [
-      {
-        type: 'Feature',
-        geometry: {
-          type: 'Point',
-          coordinates: [-0.09, 51.505]
-        },
-        properties: {
-          name: 'My Location'
-        }
-      }
-    ]
-  };
+	const geojsonData = {
+		type: 'FeatureCollection',
+		features: [
+			{
+				type: 'Feature',
+				geometry: {
+					type: 'Point',
+					coordinates: [-0.09, 51.505]
+				},
+				properties: {
+					name: 'My Location'
+				}
+			}
+		]
+	};
 </script>
 
 <LeafletMap options={{ center: [51.505, -0.09], zoom: 13 }}>
-  <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-  <GeoJSON data={geojsonData} />
+	<TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+	<GeoJSON data={geojsonData} />
 </LeafletMap>
 ```
 
@@ -264,6 +264,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## Acknowledgments
 
 Built with:
+
 - [Leaflet](https://leafletjs.com/) - The leading open-source JavaScript library for mobile-friendly interactive maps
 - [Svelte](https://svelte.dev/) - Cybernetically enhanced web apps
 - [SvelteKit](https://kit.svelte.dev/) - The fastest way to build Svelte apps

@@ -16,8 +16,7 @@ on:
   schedule:
     - cron: '0 0 * * 0'
   workflow_dispatch:
-  workflow_call:  # Added to allow this workflow to be called by other workflows
-
+  workflow_call: # Added to allow this workflow to be called by other workflows
 
 jobs:
   build-and-push-images:
@@ -28,82 +27,80 @@ jobs:
       contents: read
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-    - name: Set up QEMU
-      uses: docker/setup-qemu-action@v3
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
 
-    - name: Set up Docker Buildx
-      id: buildx
-      uses: docker/setup-buildx-action@v3
+      - name: Set up Docker Buildx
+        id: buildx
+        uses: docker/setup-buildx-action@v3
 
-    - name: Cache Docker layers
-      uses: actions/cache@v2
-      with:
-        path: /tmp/.buildx-cache
-        key: ${{ runner.os }}-buildx-${{ github.sha }}
-        restore-keys: |
-          ${{ runner.os }}-buildx-
+      - name: Cache Docker layers
+        uses: actions/cache@v2
+        with:
+          path: /tmp/.buildx-cache
+          key: ${{ runner.os }}-buildx-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-buildx-
 
-    - name: Login to Docker Hub
-      if: github.event_name != 'pull_request'
-      uses: docker/login-action@v3
-      with:
-        username: ${{ secrets.DOCKER_HUB_USERNAME }}
-        password: ${{ secrets.DOCKER_HUB_PASSWORD }}
+      - name: Login to Docker Hub
+        if: github.event_name != 'pull_request'
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_HUB_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB_PASSWORD }}
 
-    - name: Login to GitHub Container registry
-      if: github.event_name != 'pull_request'
-      uses: docker/login-action@v1
-      env:
-        GITHUB_USER: ${{ github.actor }}
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        registry: ghcr.io
-        username: $GITHUB_USER
-        password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Login to GitHub Container registry
+        if: github.event_name != 'pull_request'
+        uses: docker/login-action@v1
+        env:
+          GITHUB_USER: ${{ github.actor }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          registry: ghcr.io
+          username: $GITHUB_USER
+          password: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Docker meta
-      id: docker_meta
-      uses: docker/metadata-action@v3
-      with:
-        images: |
-          ${{ secrets.DOCKER_HUB_USERNAME }}/svelte-leaflet
-          ghcr.io/${{ secrets.DOCKER_HUB_USERNAME }}/svelte-leaflet
-        flavor: |
-          latest=false
-        tags: |
-          type=sha,prefix=commit-,format=long
-          type=raw,value=latest
-       
+      - name: Docker meta
+        id: docker_meta
+        uses: docker/metadata-action@v3
+        with:
+          images: |
+            ${{ secrets.DOCKER_HUB_USERNAME }}/svelte-leaflet
+            ghcr.io/${{ secrets.DOCKER_HUB_USERNAME }}/svelte-leaflet
+          flavor: |
+            latest=false
+          tags: |
+            type=sha,prefix=commit-,format=long
+            type=raw,value=latest
 
-    - name: Build and tag Docker image and push to Docker Hub
-      uses: docker/build-push-action@v2
-      id: docker_build
-      with:
-        push: ${{ github.event_name != 'pull_request' }}
-        tags: ${{ steps.docker_meta.outputs.tags }}
-        labels: ${{ steps.docker_meta.outputs.labels }}
-        builder: ${{ steps.buildx.outputs.name }}
-        cache-from: type=local,src=/tmp/.buildx-cache
-        cache-to: type=local,dest=/tmp/.buildx-cache
-        context: .
-        file: ./Dockerfile.solo
+      - name: Build and tag Docker image and push to Docker Hub
+        uses: docker/build-push-action@v2
+        id: docker_build
+        with:
+          push: ${{ github.event_name != 'pull_request' }}
+          tags: ${{ steps.docker_meta.outputs.tags }}
+          labels: ${{ steps.docker_meta.outputs.labels }}
+          builder: ${{ steps.buildx.outputs.name }}
+          cache-from: type=local,src=/tmp/.buildx-cache
+          cache-to: type=local,dest=/tmp/.buildx-cache
+          context: .
+          file: ./Dockerfile.solo
 
-    - name: Show image digest
-      run: |
-        echo ${{ steps.docker_build.outputs.digest }}
+      - name: Show image digest
+        run: |
+          echo ${{ steps.docker_build.outputs.digest }}
 
-    
-    # Dispatch deployment event only if the workflow is successful and triggered on the main branch
-    - name: Dispatch Deployment Event
-      if: github.event_name != 'pull_request' && success()
-      run: |
-        curl -X POST \
-        -H "Authorization: token ${{ secrets.PAT }}" \
-        -H "Accept: application/vnd.github+json" \
-        https://api.github.com/repos/valiantlynx/svelte-leaflet/dispatches \
-        -d '{"event_type": "image_pushed"}'
-      env:
-        PAT: ${{ secrets.PAT }}
+      # Dispatch deployment event only if the workflow is successful and triggered on the main branch
+      - name: Dispatch Deployment Event
+        if: github.event_name != 'pull_request' && success()
+        run: |
+          curl -X POST \
+          -H "Authorization: token ${{ secrets.PAT }}" \
+          -H "Accept: application/vnd.github+json" \
+          https://api.github.com/repos/valiantlynx/svelte-leaflet/dispatches \
+          -d '{"event_type": "image_pushed"}'
+        env:
+          PAT: ${{ secrets.PAT }}

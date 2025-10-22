@@ -6,19 +6,19 @@
 
 	import jsonData from './data.json';
 	const properties = {
-        options: {
-            type: "Object",
-            default: "undefined",
-            description: "Options."
-        }
-    };
+		options: {
+			type: 'Object',
+			default: 'undefined',
+			description: 'Options.'
+		}
+	};
 
-    const methods = {
-        getTooltip: {
-            description: "Returns the underlying Leaflet Tooltip object instance.",
-            link: "https://leafletjs.com/reference.html#tooltip"
-        }
-    };
+	const methods = {
+		getTooltip: {
+			description: 'Returns the underlying Leaflet Tooltip object instance.',
+			link: 'https://leafletjs.com/reference.html#tooltip'
+		}
+	};
 </script>
 
 <ComponentStructure title="tooltip" url="tooltip" {jsonData}>
