@@ -1,11 +1,11 @@
-version: '3'
+version: "3"
 
 services:
   svelte-leaflet:
     container_name: svelte-leaflet
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.solo
     restart: always
     ports:
       - 3000:3000
