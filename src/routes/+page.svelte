@@ -52,13 +52,13 @@
 	/>
 </svelte:head>
 
-<main class="w-full mx-auto container">
+<main class="w-full mx-auto">
 	<section class="text-center py-16 bg-green-500 border-b-8 border-black">
 		<h1 class="text-6xl font-bold text-black">Svelte-Leaflet</h1>
 		<p class="text-2xl mt-6 text-black font-semibold">Map Your Ideas into Reality</p>
 	</section>
 
-	<section class="p-16 bg-white">
+	<section class="p-16 bg-white container mx-auto">
 		<h2 class="text-4xl font-semibold text-center mb-12 text-black">Unleash the Power of Maps</h2>
 		<div class="grid md:grid-cols-3 gap-8 text-center">
 			<div class="neobrutalism-card bg-orange-500 rounded-none p-10">
