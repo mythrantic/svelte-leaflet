@@ -51,74 +51,74 @@
 </svelte:head>
 
 <main class="w-full mx-auto container">
-	<section class=" text-center py-16 bg-gradient-to-br from-blue-600 to-indigo-800">
-		<h1 class="text-6xl font-bold text-white">Svelte-Leaflet</h1>
-		<p class="text-2xl mt-6 text-gray-300 animate-bounce">Map Your Ideas into Reality</p>
+	<section class="text-center py-16 bg-green-500 border-b-8 border-black">
+		<h1 class="text-6xl font-bold text-black">Svelte-Leaflet</h1>
+		<p class="text-2xl mt-6 text-black font-semibold">Map Your Ideas into Reality</p>
 	</section>
 
-	<section class="p-16">
-		<h2 class="text-4xl font-semibold text-center mb-12">Unleash the Power of Maps</h2>
+	<section class="p-16 bg-white">
+		<h2 class="text-4xl font-semibold text-center mb-12 text-black">Unleash the Power of Maps</h2>
 		<div class="grid md:grid-cols-3 gap-8 text-center">
 			<div
-				class="bg-gray-900 shadow-xl rounded-xl p-10 transform hover:scale-105 transition duration-500"
+				class="neobrutalism-card bg-orange-500 rounded-none p-10"
 			>
-				<span class="block text-3xl text-blue-600 font-semibold mb-4">🌍 Dynamic</span>
-				<p>Instantly visualize data with interactive and customizable maps.</p>
+				<span class="block text-3xl text-black font-bold mb-4">🌍 Dynamic</span>
+				<p class="text-black font-medium">Instantly visualize data with interactive and customizable maps.</p>
 			</div>
 			<div
-				class="bg-gray-900 shadow-xl rounded-xl p-10 transform hover:scale-105 transition duration-500"
+				class="neobrutalism-card bg-green-500 rounded-none p-10"
 			>
-				<span class="block text-3xl text-green-600 font-semibold mb-4">⚡ Efficient</span>
-				<p>Highly optimized for speed and performance, keeping your app swift.</p>
+				<span class="block text-3xl text-black font-bold mb-4">⚡ Efficient</span>
+				<p class="text-black font-medium">Highly optimized for speed and performance, keeping your app swift.</p>
 			</div>
 			<div
-				class="bg-gray-900 shadow-xl rounded-xl p-10 transform hover:scale-105 transition duration-500"
+				class="neobrutalism-card bg-orange-500 rounded-none p-10"
 			>
-				<span class="block text-3xl text-red-600 font-semibold mb-4">🎨 Customizable</span>
-				<p>Full control over styling and features to suit your application's design.</p>
+				<span class="block text-3xl text-black font-bold mb-4">🎨 Customizable</span>
+				<p class="text-black font-medium">Full control over styling and features to suit your application's design.</p>
 			</div>
 		</div>
 	</section>
-	<section class="py-16 bg-gradient-to-br from-blue-600 to-pink-600 text-white">
-		<h2 class="text-4xl font-semibold text-center mb-12">Easy Integration</h2>
+	<section class="py-16 bg-orange-500 border-y-8 border-black text-black">
+		<h2 class="text-4xl font-semibold text-center mb-12 font-bold">Easy Integration</h2>
 
 		<div class="flex flex-wrap justify-center gap-8 mx-4">
 			<div class="max-w-md">
 				<h3 class="text-2xl font-semibold mb-4">Quick Start</h3>
-				<p class="text-lg mb-4">
-					Begin with <code class="bg-gray-700 px-2 py-1 rounded"
+				<p class="text-lg mb-4 font-medium">
+					Begin with <code class="bg-black text-white px-2 py-1 border-2 border-black"
 						>npm install @valiantlynx/svelte-leaflet</code
-					>. Import <code class="bg-gray-700 px-2 py-1 rounded">&lt;LeafletMap&gt;</code> and
-					<code class="bg-gray-700 px-2 py-1 rounded">&lt;TileLayer&gt;</code> to create stunning maps.
+					>. Import <code class="bg-black text-white px-2 py-1 border-2 border-black">&lt;LeafletMap&gt;</code> and
+					<code class="bg-black text-white px-2 py-1 border-2 border-black">&lt;TileLayer&gt;</code> to create stunning maps.
 				</p>
 			</div>
 			<div class="max-w-md">
 				<h3 class="text-2xl font-semibold mb-4">Extensive Documentation</h3>
-				<p class="text-lg">
+				<p class="text-lg font-medium">
 					Explore our comprehensive guides and examples in the <a
 						href="/components"
-						class="text-blue-400 hover:text-blue-600">documentation</a
+						class="text-black underline font-bold hover:text-white">documentation</a
 					>. Learn how to utilize components like
-					<code class="bg-gray-700 px-2 py-1 rounded">LeafletMap</code>
-					and <code class="bg-gray-700 px-2 py-1 rounded">TileLayer</code> in your projects.
+					<code class="bg-black text-white px-2 py-1 border-2 border-black">LeafletMap</code>
+					and <code class="bg-black text-white px-2 py-1 border-2 border-black">TileLayer</code> in your projects.
 				</p>
 			</div>
 
 			<div class="w-full md:w-3/4">
 				<!-- snippet of code that will be displayed in the code snippet box, with syntax highlighting and copy button -->
-				<div class="mx-auto mt-14 bg-gray-900 rounded-lg overflow-hidden">
-					<div class="p-4">
+				<div class="mx-auto mt-14 bg-white border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] rounded-none overflow-hidden">
+					<div class="p-4 bg-green-500 border-b-4 border-black">
 						<div class="flex items-center justify-between">
-							<span class="text-gray-200 text-xl font-bold">Code Snippet</span>
+							<span class="text-black text-xl font-bold">Code Snippet</span>
 							<button
 								id="copyButton"
-								class="px-4 py-2 text-white bg-teal-500 rounded hover:bg-teal-600 focus:outline-none focus:ring focus:ring-red-400"
+								class="neobrutalism-btn px-4 py-2 text-black bg-white rounded-none"
 								on:click={copyToClipboard}>Copy</button
 							>
 						</div>
 					</div>
 
-					<div class="px-3 py-2">
+					<div class="px-3 py-2 bg-gray-900">
 						<pre class="language-html"><code class="text-sm">
         {@html codeSnippet}
     </code></pre>

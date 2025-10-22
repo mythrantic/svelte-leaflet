@@ -25,11 +25,11 @@
 
 <Toaster />
 
-<nav class="bg-base-300 p-4 text text-base-content">
+<nav class="bg-green-500 p-4 text-black border-b-8 border-black">
 	<div class="flex items-center justify-between">
 		<!-- Your logo or site name -->
 		<a href="https://valiantlynx.com">
-			<img src="/logo.jpg" alt="valiantlynx Logo" class="h-12 w-12" />
+			<img src="/logo.jpg" alt="valiantlynx Logo" class="h-12 w-12 border-4 border-black" />
 		</a>
 
 		<div class="flex items-center space-x-4">
@@ -42,7 +42,7 @@
 		<!-- Social Media Links -->
 		<div class="flex items-center space-x-4">
 			<!-- Componest button -->
-			<a href="/components" class="btn btn-primary bg-gradient-to-r from-blue-600 to-pink-600">
+			<a href="/components" class="neobrutalism-btn bg-orange-500 text-black px-6 py-2 rounded-none">
 				Components
 			</a>
 			{#each socialLinks as { icon, url }}
@@ -56,19 +56,19 @@
 
 <slot />
 
-<section class="py-16">
-	<h2 class="text-4xl font-semibold text-center mb-12 text-white">Explore Our Components</h2>
+<section class="py-16 bg-white">
+	<h2 class="text-4xl font-semibold text-center mb-12 text-black">Explore Our Components</h2>
 	<div class="container mx-auto p-8">
 		<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 text-center">
 			<!-- Component Cards -->
 			{#each components as component}
 				<div
-					class="bg-gray-900 hover:bg-gray-800 shadow-lg rounded-lg p-6 transition duration-300 ease-in-out"
+					class="neobrutalism-card bg-green-500 rounded-none p-6"
 				>
-					<a href={component.link} class="text-lg font-semibold text-blue-500 hover:text-blue-700"
+					<a href={component.link} class="text-lg font-bold text-black hover:underline"
 						>{component.name}</a
 					>
-					<p class="text-gray-300 mt-2">{component.description}</p>
+					<p class="text-black mt-2 font-medium">{component.description}</p>
 				</div>
 			{/each}
 		</div>
@@ -76,23 +76,23 @@
 		<div class="mt-12 flex justify-center">
 			<a
 				href="/components"
-				class="w-full md:w-auto bg-gradient-to-r from-blue-600 to-pink-600 hover:from-pink-600 hover:to-purple-500 text-white font-bold py-3 px-6 rounded-lg shadow-lg transform transition duration-500 hover:scale-105"
+				class="neobrutalism-btn w-full md:w-auto bg-orange-500 text-black py-3 px-6 rounded-none"
 			>
-				<span class="animate-pulse">See All Components</span>
+				<span>See All Components</span>
 			</a>
 		</div>
 	</div>
 </section>
 
-<section class="py-16 bg-gradient-to-bl from-purple-500 to-pink-600 text-white">
-	<h2 class="text-4xl font-semibold text-center mb-12">Frequently Asked Questions</h2>
+<section class="py-16 bg-orange-500 border-y-8 border-black text-black">
+	<h2 class="text-4xl font-semibold text-center mb-12 font-bold">Frequently Asked Questions</h2>
 	<div class="accordion max-w-4xl mx-auto">
-		<div class="join join-vertical w-full">
-			<div class="collapse collapse-arrow border border-base-300 bg-white bg-opacity-10 rounded-md">
+		<div class="join join-vertical w-full space-y-4">
+			<div class="neobrutalism-card bg-white rounded-none">
 				<input type="radio" name="my-accordion" />
-				<div class="collapse-title text-xl font-medium">What is Svelte-Leaflet?</div>
+				<div class="collapse-title text-xl font-bold text-black">What is Svelte-Leaflet?</div>
 				<div class="collapse-content">
-					<p>
+					<p class="text-black">
 						Svelte-Leaflet is a Svelte library that makes integrating and managing Leaflet maps in
 						Svelte applications effortless and efficient.
 					</p>
@@ -100,24 +100,24 @@
 			</div>
 
 			<!-- More FAQ items -->
-			<div class="collapse collapse-arrow border border-base-300 bg-white bg-opacity-10 rounded-md">
+			<div class="neobrutalism-card bg-white rounded-none">
 				<input type="radio" name="my-accordion" />
-				<div class="collapse-title text-xl font-medium">How do I install Svelte-Leaflet?</div>
+				<div class="collapse-title text-xl font-bold text-black">How do I install Svelte-Leaflet?</div>
 				<div class="collapse-content">
-					<p>
+					<p class="text-black">
 						Install Svelte-Leaflet by running `npm install @valiantlynx/svelte-leaflet` in your
 						project. Then, import and use Leaflet components as needed.
 					</p>
 				</div>
 			</div>
 
-			<div class="collapse collapse-arrow border border-base-300 bg-white bg-opacity-10 rounded-md">
+			<div class="neobrutalism-card bg-white rounded-none">
 				<input type="radio" name="my-accordion" />
-				<div class="collapse-title text-xl font-medium">
+				<div class="collapse-title text-xl font-bold text-black">
 					How do I use the Leaflet Map component in my project?
 				</div>
 				<div class="collapse-content">
-					<p>
+					<p class="text-black">
 						The Leaflet Map component can be easily integrated by importing it into your Svelte file
 						and adding it as a Svelte component with custom properties for customization.
 					</p>
@@ -129,25 +129,25 @@
 	</div>
 </section>
 
-<footer class="bg-gray-900 text-white">
+<footer class="bg-black text-white border-t-8 border-black">
 	<div class="container mx-auto px-6 py-10 md:flex md:justify-between">
 		<div class="mb-6 md:mb-0">
-			<a href="/" class="text-2xl font-bold text-blue-500 hover:text-blue-700">Svelte-Leaflet</a>
-			<p class="mt-2 text-gray-400">The ultimate Svelte library for Leaflet maps.</p>
+			<a href="/" class="text-2xl font-bold text-green-500 hover:text-orange-500">Svelte-Leaflet</a>
+			<p class="mt-2 text-gray-300">The ultimate Svelte library for Leaflet maps.</p>
 		</div>
 
 		<div class="grid grid-cols-2 gap-8 md:grid-cols-4">
 			<div>
-				<h2 class="text-xl font-semibold mb-3">Resources</h2>
-				<ul class="text-gray-400">
+				<h2 class="text-xl font-semibold mb-3 text-green-500">Resources</h2>
+				<ul class="text-gray-300">
 					<li class="mb-2"><a href="/components" class="hover:text-white">Documentation</a></li>
 					<li class="mb-2"><a href="/components" class="hover:text-white">Components</a></li>
 					<li><a href="https://valiantlynx.com" class="hover:text-white">Tutorials</a></li>
 				</ul>
 			</div>
 			<div>
-				<h2 class="text-xl font-semibold mb-3">Support</h2>
-				<ul class="text-gray-400">
+				<h2 class="text-xl font-semibold mb-3 text-orange-500">Support</h2>
+				<ul class="text-gray-300">
 					<li class="mb-2">
 						<a href="https://valiantlynx.com" class="hover:text-white">FAQs</a>
 					</li>
@@ -158,10 +158,10 @@
 				</ul>
 			</div>
 			<div class="col-span-2 md:col-auto">
-				<h2 class="text-xl font-semibold mb-3">Stay Connected</h2>
+				<h2 class="text-xl font-semibold mb-3 text-green-500">Stay Connected</h2>
 				<div class="flex mt-4">
 					{#each socialLinks as { icon, url }}
-						<a href={url} class="mr-6 text-gray-400 hover:text-blue-500">
+						<a href={url} class="mr-6 text-gray-400 hover:text-orange-500">
 							<img src={icon} class=" w-6 h-6" alt="Social Media Icon for valiantlynx" />
 						</a>
 					{/each}

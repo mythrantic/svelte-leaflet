@@ -69,13 +69,13 @@
 <form
 	action="/components/{url}?/save"
 	method="POST"
-	class="rounded-box p-10 items-center mt-3 bg-gradient-to-bl from-purple-500 to-pink-600 text-white mx-7"
+	class="neobrutalism-card rounded-none p-10 items-center mt-3 bg-orange-500 text-black mx-7"
 	use:enhance={saveData}
 >
 	<ValiantRichText bind:initialData={$contentData} />
 
 	<input type="hidden" name="content_object" bind:value={$contentData} />
-	<button class="btn btn-primary" on:click={updateContent} disabled={loading} type="submit">
+	<button class="neobrutalism-btn bg-green-500 text-black px-6 py-3 rounded-none" disabled={loading} type="submit">
 		Save
 	</button>
 </form>
