@@ -16,7 +16,7 @@ jobs:
   version:
     timeout-minutes: 15
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout code repository
         uses: actions/checkout@v3
@@ -53,13 +53,13 @@ jobs:
           else
             echo "No uncommitted changes, proceeding..."
           fi
-      
+
       - name: Create and publish versions
         uses: changesets/action@v1
         with:
           version: pnpm ci:version
-          commit: "chore: update versions [skip ci]"
-          title: "chore: update versions [skip ci]"
+          commit: 'chore: update versions [skip ci]'
+          title: 'chore: update versions [skip ci]'
           publish: pnpm ci:publish
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

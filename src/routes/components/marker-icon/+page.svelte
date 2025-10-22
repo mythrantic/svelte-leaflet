@@ -7,16 +7,16 @@
 	import jsonData from './data.json';
 	const properties = {
 		options: {
-			type: "Object",
-			default: "undefined",
-			description: "Options."
+			type: 'Object',
+			default: 'undefined',
+			description: 'Options.'
 		}
 	};
 
 	const methods = {
 		getIcon: {
-			description: "Returns the underlying Leaflet Icon object instance.",
-			link: "https://leafletjs.com/reference.html#icon"
+			description: 'Returns the underlying Leaflet Icon object instance.',
+			link: 'https://leafletjs.com/reference.html#icon'
 		}
 	};
 </script>

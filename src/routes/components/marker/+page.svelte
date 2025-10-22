@@ -5,47 +5,47 @@
 	import Properties from '$lib/site-components/Properties.svelte';
 
 	import jsonData from './data.json';
-	
+
 	const properties = {
 		latLng: {
-			type: "LatLng",
-			description: "Geographical point."
+			type: 'LatLng',
+			description: 'Geographical point.'
 		},
 		zIndexOffset: {
-			type: "Number",
+			type: 'Number',
 			default: 0,
-			description: "z-index offset."
+			description: 'z-index offset.'
 		},
 		icon: {
-			type: "String",
-			description: "TODO L.Icon.Default"
+			type: 'String',
+			description: 'TODO L.Icon.Default'
 		},
 		opacity: {
-			type: "Number",
+			type: 'Number',
 			default: 1.0,
-			description: "Opacity."
+			description: 'Opacity.'
 		},
 		rotationAngle: {
-			type: "Number",
+			type: 'Number',
 			default: 0,
-			description: "Rotation angle."
+			description: 'Rotation angle.'
 		},
 		rotationOrigin: {
-			type: "String",
-			default: "center bottom",
-			description: "Rotation origin."
+			type: 'String',
+			default: 'center bottom',
+			description: 'Rotation origin.'
 		},
 		options: {
-			type: "Object",
-			default: "undefined",
-			description: "Options."
+			type: 'Object',
+			default: 'undefined',
+			description: 'Options.'
 		}
 	};
 
 	const methods = {
 		getMarker: {
-			description: "Returns the underlying Leaflet Marker object instance.",
-			link: "https://leafletjs.com/reference.html#marker"
+			description: 'Returns the underlying Leaflet Marker object instance.',
+			link: 'https://leafletjs.com/reference.html#marker'
 		}
 	};
 </script>

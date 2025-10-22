@@ -7,16 +7,16 @@
 	import jsonData from './data.json';
 	const properties = {
 		options: {
-			type: "Object",
-			default: "undefined",
-			description: "See https://leafletjs.com/reference.html#map-option"
+			type: 'Object',
+			default: 'undefined',
+			description: 'See https://leafletjs.com/reference.html#map-option'
 		}
 	};
 
 	const methods = {
 		getMap: {
-			description: "Returns the underlying Leaflet Map object instance.",
-			link: "https://leafletjs.com/reference.html#map-factory"
+			description: 'Returns the underlying Leaflet Map object instance.',
+			link: 'https://leafletjs.com/reference.html#map-factory'
 		}
 	};
 </script>

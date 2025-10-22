@@ -7,21 +7,21 @@
 	import jsonData from './data.json';
 	const properties = {
 		data: {
-			type: "Object",
-			default: "undefined",
-			description: "GeoJSON object"
+			type: 'Object',
+			default: 'undefined',
+			description: 'GeoJSON object'
 		},
 		options: {
-			type: "Object",
-			default: "undefined",
-			description: "Options."
+			type: 'Object',
+			default: 'undefined',
+			description: 'Options.'
 		}
 	};
 
 	const methods = {
 		getGeoJSON: {
-			description: "Returns the underlying Leaflet GeoJSON object instance.",
-			link: "https://leafletjs.com/reference.html#geojson"
+			description: 'Returns the underlying Leaflet GeoJSON object instance.',
+			link: 'https://leafletjs.com/reference.html#geojson'
 		}
 	};
 </script>
@@ -31,5 +31,10 @@
 	<Properties {properties} />
 	<Methods {methods} />
 	<!-- get json data button link -->
-	<a href="/example.geojson" target="_blank" class="inline-block mt-4 mb-4 text-blue-500 text-3xl font-bold hover:underline">Get example geojson data</a>
+	<a
+		href="/example.geojson"
+		target="_blank"
+		class="inline-block mt-4 mb-4 text-blue-500 text-3xl font-bold hover:underline"
+		>Get example geojson data</a
+	>
 </ComponentStructure>

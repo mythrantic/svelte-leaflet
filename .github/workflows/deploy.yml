@@ -2,10 +2,10 @@ name: Deploy
 run-name: ${{ github.actor }} is deploying 🚀🚀🚀
 
 # Define a concurrency group to ensure only one workflow runs at a time
-concurrency: 
+concurrency:
   group: deploy_group
   cancel-in-progress: false
-  
+
 on:
   repository_dispatch:
     types: [image_pushed]

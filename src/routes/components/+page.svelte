@@ -116,21 +116,28 @@
 		}
 	];
 </script>
+
 <div class="ml-4">
 	<Breadcrumbs {crumbs} />
 </div>
 
-<div class="container mx-auto p-8">
-	<h1 class="text-5xl font-bold text-center mb-10">Explore Our Components</h1>
+<div class="container mx-auto p-8 bg-white">
+	<h1 class="text-5xl font-bold text-center mb-10 text-black">Explore Our Components</h1>
 	<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
 		{#each components as component}
-			<div class="card card-bordered card-compact lg:card-normal bg-base-100 shadow-xl">
-				<figure><img src="/logo.jpg" alt={component.name} /></figure>
-				<div class="card-body">
-					<h2 class="card-title">{component.name}</h2>
-					<p>{component.description}</p>
-					<div class="card-actions justify-end">
-						<a href={component.link} class="btn btn-primary">Learn More / code</a>
+			<div class="neobrutalism-card bg-green-500 rounded-none">
+				<figure class="border-b-4 border-black">
+					<img src="/logo.jpg" alt={component.name} />
+				</figure>
+				<div class="p-6">
+					<h2 class="text-2xl font-bold text-black mb-2">{component.name}</h2>
+					<p class="text-black font-medium mb-4">{component.description}</p>
+					<div class="flex justify-end">
+						<a
+							href={component.link}
+							class="neobrutalism-btn bg-orange-500 text-black px-4 py-2 rounded-none"
+							>Learn More / code</a
+						>
 					</div>
 				</div>
 			</div>

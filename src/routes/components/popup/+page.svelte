@@ -6,19 +6,19 @@
 
 	import jsonData from './data.json';
 	const properties = {
-        options: {
-            type: "Object",
-            default: "undefined",
-            description: "Options."
-        }
-    };
+		options: {
+			type: 'Object',
+			default: 'undefined',
+			description: 'Options.'
+		}
+	};
 
-    const methods = {
-        getPopup: {
-            description: "Returns the underlying Leaflet Popup object instance.",
-            link: "https://leafletjs.com/reference.html#popup"
-        }
-    };
+	const methods = {
+		getPopup: {
+			description: 'Returns the underlying Leaflet Popup object instance.',
+			link: 'https://leafletjs.com/reference.html#popup'
+		}
+	};
 </script>
 
 <ComponentStructure title="Popup" url="popup" {jsonData}>
