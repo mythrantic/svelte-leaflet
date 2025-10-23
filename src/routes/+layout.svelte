@@ -28,8 +28,8 @@
 <nav class="bg-green-500 p-4 text-black border-b-8 border-black">
 	<div class="flex items-center justify-between">
 		<!-- Your logo or site name -->
-		<a href="https://valiantlynx.com">
-			<img src="/logo.jpg" alt="valiantlynx Logo" class="h-12 w-12 border-4 border-black" />
+		<a href="https://svelte-leaflet.valiantlynx.com">
+			<img src="/logo.svg" alt="Svelte Leaflet Logo" class="h-12 w-12 border-4 border-black" />
 		</a>
 
 		<div class="flex items-center space-x-4">

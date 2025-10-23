@@ -127,7 +127,7 @@
 		{#each components as component}
 			<div class="neobrutalism-card bg-green-500 rounded-none">
 				<figure class="border-b-4 border-black">
-					<img src="/logo.jpg" alt={component.name} />
+					<img src="/logo.svg" alt={component.name} />
 				</figure>
 				<div class="p-6">
 					<h2 class="text-2xl font-bold text-black mb-2">{component.name}</h2>
