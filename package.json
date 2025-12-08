@@ -96,7 +96,7 @@
 	},
 	"dependencies": {
 		"@valiantlynx/svelte-ui": "0.0.23",
-		"leaflet.fullscreen": "^4.0.0"
+		"leaflet.fullscreen": "^5.1.1"
 	},
 	"main": "./dist/index.js",
 	"module": "./dist/index.js",
