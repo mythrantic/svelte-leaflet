@@ -1,18 +1,23 @@
 <script>
-	import { getContext } from 'svelte';
+	import { getContext, untrack } from 'svelte';
 	import L from 'leaflet';
 
 	const { getMarker } = getContext(L.Marker);
 
-	export let options = {};
+	let { options = {}, children } = $props();
 
-	let icon;
-	let html;
+	let icon = $state(null);
+	let html = $state(null);
 
-	$: {
-		icon = L.divIcon({ ...{ html }, ...options });
-		getMarker().setIcon(icon);
-	}
+	$effect(() => {
+		if (html) {
+			const newIcon = L.divIcon({ ...{ html }, ...options });
+			untrack(() => {
+				icon = newIcon;
+			});
+			getMarker()?.setIcon(newIcon);
+		}
+	});
 
 	export function getIcon() {
 		return icon;
@@ -20,5 +25,5 @@
 </script>
 
 <div bind:this={html}>
-	<slot />
+	{@render children?.()}
 </div>

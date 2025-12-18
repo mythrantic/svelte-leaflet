@@ -1,12 +1,10 @@
 <script>
-	import { ValiantRichText, getData } from '@valiantlynx/svelte-rich-text';
-	import toast from 'svelte-french-toast';
+	// TODO: Update to Svelte 5 compatible version
+	// import { ValiantRichText, getData } from '@valiantlynx/svelte-rich-text';
+	import { toast } from 'svelte-sonner';
 	import { enhance } from '$app/forms';
 	import { writable } from 'svelte/store';
-	import { Breadcrumbs } from '@valiantlynx/svelte-ui';
-	export let title;
-	export let url;
-	export let jsonData;
+	let { title, url, jsonData, children, more } = $props();
 
 	let contentData = writable(jsonData);
 
@@ -55,17 +53,18 @@
 </script>
 
 <div class="bg-white min-h-screen">
-	<div class="ml-4 pt-4">
+	<!-- TODO: Update to Svelte 5 compatible version -->
+	<!-- <div class="ml-4 pt-4">
 		<Breadcrumbs {crumbs} />
-	</div>
+	</div> -->
 
 	<h1 class="text-4xl font-bold text-center text-black my-8">{title}</h1>
 
 	<div class="m-10">
-		<slot />
+		{@render children?.()}
 	</div>
 
-	<slot name="more" />
+	{@render more?.()}
 
 	<form
 		action="/components/{url}?/save"
@@ -73,7 +72,9 @@
 		class="neobrutalism-card rounded-none p-10 items-center mt-3 bg-orange-500 text-black mx-7 mb-10"
 		use:enhance={saveData}
 	>
-		<ValiantRichText bind:initialData={$contentData} />
+		<!-- TODO: Update to Svelte 5 compatible version -->
+		<!-- <ValiantRichText bind:initialData={$contentData} /> -->
+		<p class="text-black mb-4">Rich text editor temporarily disabled - update to Svelte 5 version</p>
 
 		<input type="hidden" name="content_object" bind:value={$contentData} />
 		<button

@@ -1,23 +1,25 @@
 <script>
-	import { getContext, onDestroy } from 'svelte';
+	import { getContext, onMount } from 'svelte';
 	import L from 'leaflet';
 
 	const { getMap } = getContext(L);
 
-	export let position = 'topright';
-	export let options = {};
+	let { position = 'topright', options = {} } = $props();
 
-	let scaleControl;
+	let scaleControl = $state(null);
 
-	$: {
-		if (!scaleControl) {
-			scaleControl = L.control.scale(options).addTo(getMap());
+	onMount(() => {
+		scaleControl = L.control.scale(options).addTo(getMap());
+
+		return () => {
+			scaleControl?.remove();
+		};
+	});
+
+	$effect(() => {
+		if (scaleControl) {
+			scaleControl.setPosition(position);
 		}
-		scaleControl.setPosition(position);
-	}
-
-	onDestroy(() => {
-		scaleControl.remove();
 	});
 
 	export function getScaleControl() {

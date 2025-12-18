@@ -1,62 +1,54 @@
 <script>
-	import { createEventDispatcher, getContext, onDestroy, onMount } from 'svelte';
+	import { getContext, onMount } from 'svelte';
 	import L from 'leaflet';
 	import 'leaflet-routing-machine';
 	import 'leaflet-routing-machine/dist/leaflet-routing-machine.css';
 
 	const { getMap } = getContext(L);
-	const dispatch = createEventDispatcher();
 
-	export let start = [];
-	export let destination = [];
-	export let waypoints = [];
-	export let routeCoordinates = [];
+	let {
+		start = [],
+		destination = [],
+		waypoints = [],
+		onRouteFound,
+		children
+	} = $props();
 
-	export let summary = null;
-	export let instructions = null;
+	let routeCoordinates = $state([]);
+	let summary = $state(null);
+	let instructions = $state(null);
+	let router = $state(null);
 
-	let router;
+	let waypointsArray = $derived([start, ...waypoints, destination].map((wp) => L.latLng(wp)));
 
-	// This reactive statement ensures that waypointsArray is updated whenever start, destination, or waypoints change
-	$: waypointsArray = [start, ...waypoints, destination].map((wp) => L.latLng(wp));
-
-	// Initialize the router when the component is mounted
 	onMount(() => {
 		if (start.length && destination.length) {
-			initializeRouter();
+			router = L.Routing.control({
+				waypoints: waypointsArray,
+				routeWhileDragging: false,
+				showAlternatives: false
+			}).addTo(getMap());
+
+			router.on('routesfound', (e) => {
+				routeCoordinates = e.routes[0].coordinates;
+				summary = e.routes[0].summary;
+				instructions = e.routes[0].instructions;
+				onRouteFound?.(e.routes[0]);
+			});
 		}
+
+		return () => {
+			router?.remove();
+		};
 	});
 
-	// Function to initialize the router
-	function initializeRouter() {
-		router = L.Routing.control({
-			waypoints: waypointsArray,
-			routeWhileDragging: false,
-			showAlternatives: false
-		}).addTo(getMap());
-
-		router.on('routesfound', (e) => {
-			routeCoordinates = e.routes[0].coordinates;
-			summary = e.routes[0].summary;
-			instructions = e.routes[0].instructions;
-			dispatch('routeFound', e.routes[0]);
-		});
-	}
-
-	// Reactive statement to update the router's waypoints
-	$: {
+	$effect(() => {
 		if (router && start.length && destination.length) {
 			router.setWaypoints(waypointsArray);
-		}
-	}
-
-	onDestroy(() => {
-		if (router) {
-			router.remove();
 		}
 	});
 </script>
 
 {#if start.length && destination.length}
-	<slot {routeCoordinates} />
+	{@render children?.({ routeCoordinates })}
 {/if}

@@ -1,36 +1,39 @@
 <script>
-	import { createEventDispatcher, getContext, onDestroy } from 'svelte';
+	import { getContext, onMount } from 'svelte';
 	import L from 'leaflet';
 
 	import EventBridge from '$lib/EventBridge';
 
 	const { getMap } = getContext(L);
 
-	export let imageUrl;
-	export let bounds;
-	export let opacity = 1.0;
-	export let zIndex = 1;
-	export let options = {};
-	export let events = [];
+	let {
+		imageUrl,
+		bounds,
+		opacity = 1.0,
+		zIndex = 1,
+		options = {},
+		events = []
+	} = $props();
 
-	let imageOverlay;
+	let imageOverlay = $state(null);
+	let eventBridge = $state(null);
 
-	const dispatch = createEventDispatcher();
-	let eventBridge;
+	onMount(() => {
+		imageOverlay = L.imageOverlay(imageUrl, bounds, options).addTo(getMap());
+		eventBridge = new EventBridge(imageOverlay, () => {}, events);
 
-	$: {
-		if (!imageOverlay) {
-			imageOverlay = L.imageOverlay(imageUrl, bounds, options).addTo(getMap());
-			eventBridge = new EventBridge(imageOverlay, dispatch, events);
+		return () => {
+			eventBridge?.unregister();
+			imageOverlay?.removeFrom(getMap());
+		};
+	});
+
+	$effect(() => {
+		if (imageOverlay) {
+			imageOverlay.setUrl(imageUrl);
+			imageOverlay.setOpacity(opacity);
+			imageOverlay.setZIndex(zIndex);
 		}
-		imageOverlay.setUrl(imageUrl);
-		imageOverlay.setOpacity(opacity);
-		imageOverlay.setZIndex(zIndex);
-	}
-
-	onDestroy(() => {
-		eventBridge.unregister();
-		imageOverlay.removeFrom(getMap());
 	});
 
 	export function getImageOverlay() {

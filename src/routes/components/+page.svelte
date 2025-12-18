@@ -1,6 +1,4 @@
 <script>
-	import { Breadcrumbs } from '@valiantlynx/svelte-ui';
-
 	let components = [
 		{
 			name: 'Router',
@@ -117,9 +115,10 @@
 	];
 </script>
 
-<div class="ml-4">
+<!-- TODO: Update to Svelte 5 compatible version -->
+<!-- <div class="ml-4">
 	<Breadcrumbs {crumbs} />
-</div>
+</div> -->
 
 <div class="container mx-auto p-8 bg-white">
 	<h1 class="text-5xl font-bold text-center mb-10 text-black">Explore Our Components</h1>

@@ -1,24 +1,26 @@
 <script>
-	import { getContext, onDestroy } from 'svelte';
+	import { getContext, onMount } from 'svelte';
 	import L from 'leaflet';
 	import 'leaflet.fullscreen';
 
 	const { getMap } = getContext(L);
 
-	export let position = 'bottomright';
-	export let options = {};
+	let { position = 'bottomright', options = {} } = $props();
 
-	let fullscreen;
+	let fullscreen = $state(null);
 
-	$: {
-		if (!fullscreen) {
-			fullscreen = L.control.fullscreen(options).addTo(getMap());
+	onMount(() => {
+		fullscreen = L.control.fullscreen(options).addTo(getMap());
+
+		return () => {
+			fullscreen?.remove();
+		};
+	});
+
+	$effect(() => {
+		if (fullscreen) {
+			fullscreen.setPosition(position);
 		}
-		fullscreen.setPosition(position);
-	}
-
-	onDestroy(() => {
-		fullscreen.remove();
 	});
 
 	export function getFullscreen() {

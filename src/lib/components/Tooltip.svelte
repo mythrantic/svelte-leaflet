@@ -1,31 +1,31 @@
 <script>
-	import { createEventDispatcher, getContext, onDestroy } from 'svelte';
+	import { getContext, onMount } from 'svelte';
 	import L from 'leaflet';
 
 	import EventBridge from '$lib/EventBridge';
 
 	const { getLayer } = getContext(L.Layer);
 
-	export let events = [];
-	export let options = {};
+	let { events = [], options = {}, children } = $props();
 
-	let tooltip;
-	let element;
+	let tooltip = $state(null);
+	let element = $state(null);
+	let eventBridge = $state(null);
 
-	const dispatch = createEventDispatcher();
-	let eventBridge;
+	onMount(() => {
+		tooltip = L.tooltip(options);
+		eventBridge = new EventBridge(tooltip, () => {}, events);
+		getLayer()?.bindTooltip(tooltip);
 
-	$: {
-		if (!tooltip) {
-			tooltip = L.tooltip(options);
-			eventBridge = new EventBridge(tooltip, dispatch, events);
-			getLayer().bindTooltip(tooltip);
+		return () => {
+			eventBridge?.unregister();
+		};
+	});
+
+	$effect(() => {
+		if (tooltip && element) {
+			tooltip.setContent(element);
 		}
-		tooltip.setContent(element);
-	}
-
-	onDestroy(() => {
-		eventBridge.unregister();
 	});
 
 	export function getTooltip() {
@@ -35,6 +35,6 @@
 
 <div style="display: none;">
 	<div bind:this={element}>
-		<slot />
+		{@render children?.()}
 	</div>
 </div>

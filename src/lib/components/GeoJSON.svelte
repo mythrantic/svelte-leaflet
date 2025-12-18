@@ -1,38 +1,35 @@
 <script>
-	import { createEventDispatcher, getContext, onDestroy, setContext } from 'svelte';
+	import { getContext, setContext, onMount } from 'svelte';
 	import L from 'leaflet';
 
 	import EventBridge from '$lib/EventBridge';
 
 	const { getMap } = getContext(L);
 
-	export let data;
-	export let options = {};
-	export let events = [];
+	let { data, options = {}, events = [], children } = $props();
 
-	let geojson;
+	let geojson = $state(null);
+	let eventBridge = $state(null);
 
 	setContext(L.Layer, {
 		getLayer: () => geojson
 	});
 
-	const dispatch = createEventDispatcher();
-	let eventBridge;
+	onMount(() => {
+		geojson = L.geoJSON(null, options).addTo(getMap());
+		eventBridge = new EventBridge(geojson, () => {}, events);
 
-	$: {
-		if (!geojson) {
-			geojson = L.geoJSON(null, options).addTo(getMap());
-			eventBridge = new EventBridge(geojson, dispatch, events);
-		}
-		if (data) {
+		return () => {
+			eventBridge?.unregister();
+			geojson?.removeFrom(getMap());
+		};
+	});
+
+	$effect(() => {
+		if (geojson && data) {
 			geojson.clearLayers();
 			geojson.addData(data);
 		}
-	}
-
-	onDestroy(() => {
-		eventBridge.unregister();
-		geojson.removeFrom(getMap());
 	});
 
 	export function getGeoJSON() {
@@ -42,6 +39,6 @@
 
 <div>
 	{#if geojson}
-		<slot />
+		{@render children?.()}
 	{/if}
 </div>

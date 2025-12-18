@@ -24,8 +24,7 @@
 		content: `<span class="mdi mdi-fullscreen text-xl"></span>`,
 		forceSeparateButton: true
 	};
-	export let start = [59.4171, 10.4832];
-	export let destination = [58.3421, 8.5945];
+	let { start = [59.4171, 10.4832], destination = [58.3421, 8.5945] } = $props();
 
 	let waypoints = [];
 	let polylineInstance;
@@ -39,13 +38,17 @@
 			{start}
 			{destination}
 			{waypoints}
-			bind:routeCoordinates={$routeCoordinates}
-			bind:instructions={$instructions}
-			bind:summary={$summary}
+			onRouteFound={(route) => {
+				$routeCoordinates = route.coordinates;
+				$instructions = route.instructions;
+				$summary = route.summary;
+			}}
 		>
-			<Polyline bind:this={polylineInstance} bind:latLngs={$routeCoordinates}>
-				<Popup>Dynamic Route</Popup>
-			</Polyline>
+			{#snippet children({ routeCoordinates })}
+				<Polyline bind:this={polylineInstance} latLngs={routeCoordinates}>
+					<Popup>Dynamic Route</Popup>
+				</Polyline>
+			{/snippet}
 		</Route>
 		<Fullscreen bind:this={fullscreen} options={fullscreenOptions} />
 	</LeafletMap>
