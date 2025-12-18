@@ -9,9 +9,7 @@ RUN apk add --no-cache libc6-compat
 RUN apk update
 # Set working directory
 WORKDIR /app
-RUN yarn global add turbo
 COPY . .
-RUN turbo prune svelte-leaflet --docker
 
 # Add lockfile and package.json's of isolated subworkspace
 FROM base AS installer
@@ -21,24 +19,15 @@ WORKDIR /app
 
 # First install the dependencies (as they change less often)
 COPY .gitignore .gitignore
-COPY --from=builder /app/out/json/ .
-COPY --from=builder /app/out/yarn.lock ./yarn.lock
+COPY --from=builder /app/ .
+COPY --from=builder /app/yarn.lock ./yarn.lock
 RUN yarn install
 
 # Build the project
-COPY --from=builder /app/out/full/ .
-COPY turbo.json turbo.json
+COPY --from=builder /app/ .
 
-# Uncomment and use build args to enable remote caching
-# ARG TURBO_TEAM
-# ENV TURBO_TEAM=$TURBO_TEAM
-
-# ARG TURBO_TOKEN
-# ENV TURBO_TOKEN=$TURBO_TOKEN
-
-
-# You can adjust the memory limit based on your specific requirements.
-RUN NODE_OPTIONS="--max-old-space-size=8192" yarn turbo run build --filter=svelte-leaflet --concurrency 2
+# set the deploy target to node
+RUN DEPLOY_TARGET=node yarn build
 
 
 # Create a new stage for the runner
@@ -52,8 +41,9 @@ USER svelte
 
 
 # Copy the necessary files from the installer stage
-COPY --from=installer /app/packages/svelte-leaflet/package.json .
-COPY --from=installer /app/packages/svelte-leaflet/build /app/build
+COPY --from=installer /app/package.json .
+COPY --from=installer /app/.env .
+COPY --from=installer /app/build /app/build
 
 EXPOSE 3000
 
