@@ -52,7 +52,7 @@ jobs:
         run: pnpm install
       - name: build
         run: |
-          pnpm build:all
+          pnpm build
 
       - name: Create and publish versions
         uses: changesets/action@v1
