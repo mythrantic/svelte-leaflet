@@ -4,7 +4,7 @@ A comprehensive Svelte component library for creating interactive maps with [Lea
 
 ### [Svelte 4 active development - deprecated. you can still use it here](https://github.com/mythrantic/svelte-leaflet/tree/gh-pages)
 
-[![npm version](https://img.shields.io/npm/v/@valiantlynx/svelte-leaflet.svg)](https://www.npmjs.com/package/@valiantlynx/svelte-leaflet)
+[![npm version](https://img.shields.io/npm/v/@mythrantic/svelte-leaflet.svg)](https://www.npmjs.com/package/@mythrantic/svelte-leaflet)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## Features
@@ -19,20 +19,20 @@ A comprehensive Svelte component library for creating interactive maps with [Lea
 ## Installation
 
 ```bash
-npm install @valiantlynx/svelte-leaflet leaflet
+npm install @mythrantic/svelte-leaflet leaflet
 ```
 
 or with yarn:
 
 ```bash
-yarn add @valiantlynx/svelte-leaflet leaflet
+yarn add @mythrantic/svelte-leaflet leaflet
 ```
 
 ## Quick Start
 
 ```svelte
 <script>
-	import { LeafletMap, TileLayer, Marker, Popup } from '@valiantlynx/svelte-leaflet';
+	import { LeafletMap, TileLayer, Marker, Popup } from '@mythrantic/svelte-leaflet';
 
 	const mapOptions = {
 		center: [51.505, -0.09],
@@ -118,7 +118,7 @@ Don't forget to include Leaflet CSS in your app:
 
 ```svelte
 <script>
-	import { LeafletMap, TileLayer, Marker, Popup } from '@valiantlynx/svelte-leaflet';
+	import { LeafletMap, TileLayer, Marker, Popup } from '@mythrantic/svelte-leaflet';
 
 	const locations = [
 		{ lat: 51.505, lng: -0.09, name: 'Location 1' },
@@ -141,7 +141,7 @@ Don't forget to include Leaflet CSS in your app:
 
 ```svelte
 <script>
-	import { LeafletMap, TileLayer, Circle, Polygon } from '@valiantlynx/svelte-leaflet';
+	import { LeafletMap, TileLayer, Circle, Polygon } from '@mythrantic/svelte-leaflet';
 
 	const circleOptions = {
 		color: 'red',
@@ -168,7 +168,7 @@ Don't forget to include Leaflet CSS in your app:
 
 ```svelte
 <script>
-	import { LeafletMap, TileLayer, GeoJSON } from '@valiantlynx/svelte-leaflet';
+	import { LeafletMap, TileLayer, GeoJSON } from '@mythrantic/svelte-leaflet';
 
 	const geojsonData = {
 		type: 'FeatureCollection',
@@ -271,7 +271,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Support
 
-- **Issues**: [GitHub Issues](https://github.com/valiantlynx/svelte-leaflet/issues)
+- **Issues**: [GitHub Issues](https://github.com/mythrantic/svelte-leaflet/issues)
 - **Discussions**: Use GitHub Discussions for questions and community support
 
 ## Acknowledgments
@@ -284,4 +284,4 @@ Built with:
 
 ---
 
-Made with ❤️ by [valiantlynx](https://www.valiantlynx.com/)
+Made with ❤️ by [mythrantic](https://www.valiantlynx.com/)

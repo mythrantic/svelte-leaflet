@@ -7,7 +7,7 @@
 	
 	const socialLinks = [
 		{ url: 'https://github.com/valiantlynx/svelte-leaflet', icon: '/icons/github.svg' },
-		{ url: 'https://twitter.com/valiantlynxz', icon: '/icons/twitter.svg' },
+		{ url: 'https://twitter.com/valiantlynx42', icon: '/icons/twitter.svg' },
 		{ url: 'https://www.linkedin.com/in/gormery-wanjiru-02b737314', icon: '/icons/linkedin.svg' }
 	];
 	// Sample data for components
@@ -111,7 +111,7 @@
 				</div>
 				<div class="collapse-content">
 					<p class="text-black">
-						Install Svelte-Leaflet by running `npm install @valiantlynx/svelte-leaflet` in your
+						Install Svelte-Leaflet by running `npm install @mythrantic/svelte-leaflet` in your
 						project. Then, import and use Leaflet components as needed.
 					</p>
 				</div>
@@ -155,12 +155,12 @@
 				<h2 class="text-xl font-semibold mb-3 text-orange-500">Support</h2>
 				<ul class="text-gray-300">
 					<li class="mb-2">
-						<a href="https://valiantlynx.com" class="hover:text-white">FAQs</a>
+						<a href="https://github.com/mythrantic/svelte-leaflet/discussions" class="hover:text-white">FAQs</a>
 					</li>
 					<li class="mb-2">
-						<a href="https://valiantlynx.com" class="hover:text-white">Contact Us</a>
+						<a href="https://github.com/mythrantic/svelte-leaflet/discussions" class="hover:text-white">Contact Us</a>
 					</li>
-					<li><a href="https://valiantlynx.com" class="hover:text-white">Community</a></li>
+					<li><a href="https://github.com/mythrantic/svelte-leaflet/discussions" class="hover:text-white">Community</a></li>
 				</ul>
 			</div>
 			<div class="col-span-2 md:col-auto">
@@ -177,6 +177,6 @@
 	</div>
 
 	<div class="border-t border-gray-800 text-center py-4">
-		<p>&copy; 2023 Valiantlynx. All Rights Reserved.</p>
+		<p>&copy; 2023 mythrantic. All Rights Reserved.</p>
 	</div>
 </footer>

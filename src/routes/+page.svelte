@@ -89,7 +89,7 @@
 				<h3 class="text-2xl font-semibold mb-4">Quick Start</h3>
 				<p class="text-lg mb-4 font-medium">
 					Begin with <code class="bg-black text-white px-2 py-1 border-2 border-black"
-						>npm install @valiantlynx/svelte-leaflet</code
+						>npm install @mythrantic/svelte-leaflet</code
 					>. Import
 					<code class="bg-black text-white px-2 py-1 border-2 border-black">&lt;LeafletMap&gt;</code
 					>
