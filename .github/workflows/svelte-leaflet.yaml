@@ -98,9 +98,7 @@ jobs:
         if: github.event_name != 'pull_request' && success()
         run: |
           curl -X POST \
-          -H "Authorization: token ${{ secrets.PAT }}" \
+          -H "Authorization: token ${{ github.token }}" \
           -H "Accept: application/vnd.github+json" \
           https://api.github.com/repos/valiantlynx/svelte-leaflet/dispatches \
           -d '{"event_type": "image_pushed"}'
-        env:
-          PAT: ${{ secrets.PAT }}
