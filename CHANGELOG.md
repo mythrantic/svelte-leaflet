@@ -1,5 +1,11 @@
 # @valiantlynx/svelte-leaflet
 
+## 1.1.1
+
+### Patch Changes
+
+- cae880d: testing really of changesets strategy
+
 ## 1.1.0
 
 ### Minor Changes
