@@ -20,15 +20,24 @@
 		"components",
 		"blocks"
 	],
-	"author": "valiantlynx",
+	"author": {
+		"name": "valiantlynx",
+		"email": "valiantlynxz@gmail.com"
+	},
+	"contributors": [
+		{
+			"name": "valiantlynx",
+			"email": "valiantlynxz@gmail.com"
+		}
+	],
 	"license": "MIT",
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/valiantlynx/svelte-leaflet.git"
+		"url": "git+https://github.com/mythrantic/svelte-leaflet.git"
 	},
 	"homepage": "https://svelte-leaflet.valiantlynx.com",
 	"bugs": {
-		"url": "https://github.com/valiantlynx/svelte-leaflet/issues"
+		"url": "https://github.com/mythrantic/svelte-leaflet/issues"
 	},
 	"scripts": {
 		"dev": "vite --host",
