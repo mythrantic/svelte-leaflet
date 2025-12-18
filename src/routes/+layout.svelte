@@ -4,8 +4,8 @@
 	import { Toaster } from 'svelte-french-toast';
 	const socialLinks = [
 		{ url: 'https://github.com/valiantlynx/svelte-leaflet', icon: '/icons/github.svg' },
-		{ url: 'https://twitter.com/valiantlynxz', icon: '/icons/twitter.svg' },
-		{ url: 'https://www.linkedin.com/in/valiant-lynx-b3773224a', icon: '/icons/linkedin.svg' }
+		{ url: 'https://twitter.com/valiantlynx42', icon: '/icons/twitter.svg' },
+		{ url: 'https://www.linkedin.com/in/gormery-wanjiru-02b737314', icon: '/icons/linkedin.svg' }
 	];
 	// Sample data for components
 	let components = [
