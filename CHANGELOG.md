@@ -1,5 +1,11 @@
 # @valiantlynx/svelte-leaflet
 
+## 1.1.2
+
+### Patch Changes
+
+- fff225f: finally stable at svelte version 5
+
 ## 1.1.1
 
 ### Patch Changes
