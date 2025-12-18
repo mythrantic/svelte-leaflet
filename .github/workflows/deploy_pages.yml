@@ -34,7 +34,7 @@ jobs:
           node-version: 21
 
       - name: Install dependencies
-        run: yarn
+        run: pnpm install
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
@@ -42,7 +42,7 @@ jobs:
           static_site_generator: 'sveltekit'
 
       - name: Build site
-        run: yarn build
+        run: pnpm run build
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v4
