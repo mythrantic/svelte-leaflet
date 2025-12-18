@@ -51,7 +51,9 @@
 		"test": "vitest",
 		"lint": "prettier --plugin-search-dir . --check . && eslint .",
 		"format": "prettier --plugin-search-dir . --write .",
-		"prepublishOnly": "yarn package"
+		"prepublishOnly": "yarn package",
+		"ci:publish": "pnpm publish -r --no-git-checks",
+		"ci:version": "pnpm changeset version"
 	},
 	"exports": {
 		".": {
