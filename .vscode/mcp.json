@@ -1,0 +1,18 @@
+{
+	"servers": {
+		"playwright": {
+			"command": "npx",
+			"args": [
+				"@playwright/mcp@latest"
+			],
+			"type": "stdio"
+		},
+		"svelte-mcp": {
+			"type": "http",
+			"url": "https://apim-dev-mcptest.azure-api.net/svelte-mcp/mcp",
+			"gallery": "https://apic-prd-api-catalog.data.westeurope.azure-apicenter.ms/workspaces/default",
+			"version": "v0"
+		}
+	},
+	"inputs": []
+}

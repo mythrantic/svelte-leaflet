@@ -1,31 +1,31 @@
 <script>
-	import { createEventDispatcher, getContext, onDestroy } from 'svelte';
+	import { getContext, onMount } from 'svelte';
 	import L from 'leaflet';
 
 	import EventBridge from '$lib/EventBridge';
 
 	const { getLayer } = getContext(L.Layer);
 
-	export let events = [];
-	export let options = {};
+	let { events = [], options = {}, children } = $props();
 
-	let popup;
-	let element;
+	let popup = $state(null);
+	let element = $state(null);
+	let eventBridge = $state(null);
 
-	const dispatch = createEventDispatcher();
-	let eventBridge;
+	onMount(() => {
+		popup = L.popup(options);
+		eventBridge = new EventBridge(popup, () => {}, events);
+		getLayer()?.bindPopup(popup);
 
-	$: {
-		if (!popup) {
-			popup = L.popup(options);
-			eventBridge = new EventBridge(popup, dispatch, events);
-			getLayer().bindPopup(popup);
+		return () => {
+			eventBridge?.unregister();
+		};
+	});
+
+	$effect(() => {
+		if (popup && element) {
+			popup.setContent(element);
 		}
-		popup.setContent(element);
-	}
-
-	onDestroy(() => {
-		eventBridge.unregister();
 	});
 
 	export function getPopup() {
@@ -35,6 +35,6 @@
 
 <div style="display: none;">
 	<div bind:this={element}>
-		<slot />
+		{@render children?.()}
 	</div>
 </div>

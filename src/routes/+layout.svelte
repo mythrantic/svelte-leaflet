@@ -1,11 +1,14 @@
 <script>
 	import '../app.css';
 	import 'leaflet/dist/leaflet.css';
-	import { Toaster } from 'svelte-french-toast';
+	import { Toaster } from 'svelte-sonner';
+	
+	let { children } = $props();
+	
 	const socialLinks = [
 		{ url: 'https://github.com/valiantlynx/svelte-leaflet', icon: '/icons/github.svg' },
 		{ url: 'https://twitter.com/valiantlynxz', icon: '/icons/twitter.svg' },
-		{ url: 'https://www.linkedin.com/in/valiant-lynx-b3773224a', icon: '/icons/linkedin.svg' }
+		{ url: 'https://www.linkedin.com/in/gormery-wanjiru-02b737314', icon: '/icons/linkedin.svg' }
 	];
 	// Sample data for components
 	let components = [
@@ -57,7 +60,7 @@
 	</div>
 </nav>
 
-<slot />
+{@render children?.()}
 
 <section class="py-16 bg-white">
 	<h2 class="text-4xl font-semibold text-center mb-12 text-black">Explore Our Components</h2>

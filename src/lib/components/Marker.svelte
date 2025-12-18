@@ -1,5 +1,5 @@
 <script>
-	import { createEventDispatcher, getContext, onDestroy, setContext } from 'svelte';
+	import { getContext, setContext, onMount } from 'svelte';
 	import L from 'leaflet';
 
 	import EventBridge from '$lib/EventBridge';
@@ -17,17 +17,20 @@
 		shadowSize: [41, 41]
 	});
 
-	export let latLng;
-	export let zIndexOffset = 0;
-	export let icon = defaultIcon;
-	export let opacity = 1.0;
-	export let options = {};
-	export let events = [];
+	let { 
+		latLng,
+		zIndexOffset = 0,
+		icon = defaultIcon,
+		opacity = 1.0,
+		options = {},
+		events = [],
+		rotationAngle = 0,
+		rotationOrigin = 'center bottom',
+		children
+	} = $props();
 
-	export let rotationAngle = 0;
-	export let rotationOrigin = 'center bottom';
-
-	let marker;
+	let marker = $state(null);
+	let eventBridge = $state(null);
 
 	setContext(L.Layer, {
 		getLayer: () => marker
@@ -36,26 +39,27 @@
 		getMarker: () => marker
 	});
 
-	const dispatch = createEventDispatcher();
-	let eventBridge;
+	onMount(() => {
+		marker = L.marker(latLng, options).addTo(getMap());
+		eventBridge = new EventBridge(marker, (name, detail) => {
+			// Event handling without createEventDispatcher
+		}, events);
 
-	$: {
-		if (!marker) {
-			marker = L.marker(latLng, options).addTo(getMap());
-			eventBridge = new EventBridge(marker, dispatch, events);
+		return () => {
+			eventBridge?.unregister();
+			marker?.removeFrom(getMap());
+		};
+	});
+
+	$effect(() => {
+		if (marker) {
+			marker.setLatLng(latLng);
+			marker.setZIndexOffset(zIndexOffset);
+			marker.setIcon(icon);
+			marker.setOpacity(opacity);
+			marker.setRotationAngle(rotationAngle);
+			marker.setRotationOrigin(rotationOrigin);
 		}
-		marker.setLatLng(latLng);
-		marker.setZIndexOffset(zIndexOffset);
-		marker.setIcon(icon);
-		marker.setOpacity(opacity);
-
-		marker.setRotationAngle(rotationAngle);
-		marker.setRotationOrigin(rotationOrigin);
-	}
-
-	onDestroy(() => {
-		eventBridge.unregister();
-		marker.removeFrom(getMap());
 	});
 
 	export function getMarker() {
@@ -65,6 +69,6 @@
 
 <div>
 	{#if marker}
-		<slot />
+		{@render children?.()}
 	{/if}
 </div>

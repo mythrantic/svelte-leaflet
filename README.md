@@ -2,6 +2,8 @@
 
 A comprehensive Svelte component library for creating interactive maps with [Leaflet](https://leafletjs.com/). Build beautiful, responsive maps in your SvelteKit applications with ease.
 
+### [Svelte 4 active development - deprecated. you can still use it here](https://github.com/mythrantic/svelte-leaflet/tree/gh-pages)
+
 [![npm version](https://img.shields.io/npm/v/@valiantlynx/svelte-leaflet.svg)](https://www.npmjs.com/package/@valiantlynx/svelte-leaflet)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 

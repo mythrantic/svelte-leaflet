@@ -1,5 +1,5 @@
 <script>
-	export let properties;
+	let { properties } = $props();
 </script>
 
 <h2 class="text-2xl font-bold mb-4 text-black">Properties</h2>

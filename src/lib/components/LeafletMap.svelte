@@ -1,28 +1,28 @@
 <script>
-	import { createEventDispatcher, setContext } from 'svelte';
+	import { setContext } from 'svelte';
 	import L from 'leaflet';
 
 	import EventBridge from '$lib/EventBridge';
 
-	export let options = {};
-	export let events = [];
+	let { options = {}, events = [], children } = $props();
 
-	let map = null;
+	let map = $state(null);
+	let eventBridge = $state(null);
 
 	setContext(L, {
 		getMap: () => map
 	});
 
-	const dispatch = createEventDispatcher();
-	let eventBridge;
-
 	function initialize(container) {
 		map = L.map(container, options);
-		eventBridge = new EventBridge(map, dispatch, events);
+		eventBridge = new EventBridge(map, (name, detail) => {
+			// Dispatch custom events on the container
+			container.dispatchEvent(new CustomEvent(name, { detail }));
+		}, events);
 		return {
 			destroy: () => {
-				eventBridge.unregister();
-				map.remove();
+				eventBridge?.unregister();
+				map?.remove();
 			}
 		};
 	}
@@ -34,6 +34,6 @@
 
 <div style="height:100%; width:100%;" use:initialize>
 	{#if map}
-		<slot />
+		{@render children?.()}
 	{/if}
 </div>
