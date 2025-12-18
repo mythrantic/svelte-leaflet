@@ -1,0 +1,16 @@
+{
+	"servers": {
+		"svelte-mcp": {
+			"url": "https://mcp.svelte.dev/mcp",
+			"type": "http"
+		},
+		"playwright": {
+			"command": "npx",
+			"args": [
+				"@playwright/mcp@latest"
+			],
+			"type": "stdio"
+		}
+	},
+	"inputs": []
+}
