@@ -8,7 +8,6 @@
 	"maintainers": [
 		"valiantlynx <valiantlynxz@gmail.com> (https://www.valiantlynx.com/)"
 	],
-	"packageManager": "yarn@1.22.19",
 	"engines": {
 		"node": ">=16.14"
 	},
@@ -97,7 +96,7 @@
 		"vite": "^6.0.0"
 	},
 	"dependencies": {
-		"leaflet.fullscreen": "^4.0.0"
+		"leaflet.fullscreen": "^5.1.1"
 	},
 	"main": "./dist/index.js",
 	"module": "./dist/index.js",
