@@ -8,9 +8,6 @@
 	"maintainers": [
 		"valiantlynx <valiantlynxz@gmail.com> (https://www.valiantlynx.com/)"
 	],
-	"engines": {
-		"node": ">=16.14"
-	},
 	"keywords": [
 		"sveltekit",
 		"svelte",
