@@ -209,29 +209,29 @@ Each component accepts standard Leaflet options through the `options` prop. Refe
 ### Prerequisites
 
 - Node.js >= 16.14
-- Yarn or npm
+- pnpm or npm
 
 ### Setup
 
 ```bash
 # Clone the repository
-git clone https://github.com/valiantlynx/svelte-leaflet.git
+git clone https://github.com/mythrantic/svelte-leaflet.git
 cd svelte-leaflet
 
 # Install dependencies
-yarn install
+pnpm install
 
 # Start development server
-yarn dev
+pnpm run dev
 
 # Build the library
-yarn package
+pnpm run package
 
 # Run tests
-yarn test
+pnpm run test
 
 # Lint code
-yarn lint
+pnpm run lint
 ```
 
 ### Project Structure
@@ -249,10 +249,21 @@ src/
 Contributions are welcome! Please feel free to submit a Pull Request. For major changes, please open an issue first to discuss what you would like to change.
 
 1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+2. Create a feature branch: `git checkout -b feature/amazing-feature`
+3. Add a changelog when you do something significant (using changesets): `npx changeset`
+   - Follow the prompts to describe your changes
+   - This will create a new file in the `.changeset` directory
+   - You can add multiple changesets before committing
+   - Include the `.changeset/` files in your commit
+4. Commit changes: `git commit -m 'Add amazing feature'`
+5. Push to branch: `git push origin feature/amazing-feature`
+6. Open a Pull Request
+7. Wait for review and address any feedback
+8. Once approved, your changes will be merged and included in the next release!
+
+## License
+
+MIT License - see [LICENSE](LICENSE) file for details.
 
 ## License
 
