@@ -1,6 +1,6 @@
 <script>
 	// TODO: Update to Svelte 5 compatible version
-	// import { ValiantRichText, getData } from '@valiantlynx/svelte-rich-text';
+	// import { ValiantRichText, getData } from '@mythrantic/svelte-rich-text';
 	import { toast } from 'svelte-sonner';
 	import { enhance } from '$app/forms';
 	import { writable } from 'svelte/store';
