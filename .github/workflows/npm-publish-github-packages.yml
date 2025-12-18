@@ -1,0 +1,67 @@
+# This workflow will run tests using node and then publish a package to GitHub Packages when a release is created
+# For more information see: https://docs.github.com/en/actions/publishing-packages/publishing-nodejs-packages
+
+name: Node.js Package
+
+on:
+  release:
+    types: [created]
+  push:
+    branches:
+      - main
+
+  pull_request:
+    branches:
+      - main
+  
+  workflow_dispatch:
+concurrency: ${{ github.workflow }}-${{ github.ref }}
+env:
+  CI: true
+
+jobs:
+  version:
+    timeout-minutes: 15
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      packages: write
+      pull-requests: write
+      id-token: write
+      checks: write
+      issues: write
+
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+      - name: set up node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'pnpm'
+
+      - name: Setup npmrc
+        run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > .npmrc
+
+      - name: install dependencies
+        run: pnpm install
+      - name: build
+        run: |
+          pnpm build:all
+
+      - name: Create and publish versions
+        uses: changesets/action@v1
+        with:
+          branch: main
+          version: pnpm ci:version
+          commit: "chore: update versions [skip ci]"
+          title: "chore: update versions [skip ci]"
+          publish: pnpm ci:publish
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
