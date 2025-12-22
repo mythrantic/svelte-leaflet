@@ -73,7 +73,7 @@
 	},
 	"devDependencies": {
 		"@changesets/cli": "^2.29.8",
-		"@sveltejs/adapter-auto": "^3.0.0",
+		"@sveltejs/adapter-auto": "^7.0.0",
 		"@sveltejs/adapter-node": "^5.0.1",
 		"@sveltejs/adapter-static": "^3.0.0",
 		"@sveltejs/kit": "^2.15.0",
