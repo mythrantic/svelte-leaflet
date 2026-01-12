@@ -103,7 +103,7 @@
 		"vite": "^7.3.0"
 	},
 	"dependencies": {
-		"leaflet.fullscreen": "^4.0.0"
+		"leaflet.fullscreen": "^5.2.1"
 	},
 	"main": "./dist/index.js",
 	"module": "./dist/index.js",

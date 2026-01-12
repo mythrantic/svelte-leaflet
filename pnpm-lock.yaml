@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       leaflet.fullscreen:
-        specifier: ^4.0.0
-        version: 4.0.0
+        specifier: ^5.2.1
+        version: 5.2.1(leaflet@1.9.4)
     devDependencies:
       '@changesets/cli':
         specifier: ^2.29.8
@@ -1371,8 +1371,10 @@ packages:
   leaflet-routing-machine@3.2.12:
     resolution: {integrity: sha512-HLde58G1YtD9xSIzZavJ6BPABZaV1hHeGst8ouhzuxmSC3s32NVtADT+njbIUMW1maHRCrsgTk/E4hz5QH7FrA==}
 
-  leaflet.fullscreen@4.0.0:
-    resolution: {integrity: sha512-wIV7R6yxtlk95/Er31ptCL0MQCmG4OUU4U0SwNeamEb2xBNDIeU8GtWF2S7PaxV/fdfReNmp+QCT9cUPSNIgdw==}
+  leaflet.fullscreen@5.2.1:
+    resolution: {integrity: sha512-+3eYdmzi9+d3DgEbEEwdpVGX5PW0oG9UYFcpne1xl1MOaUuNyWfjcW9UCJQ+bzKptphvsG0sFTgNCBZfSrqNlQ==}
+    peerDependencies:
+      leaflet: ^1.7.0 || >=2.0.0-alpha.1
 
   leaflet@1.9.4:
     resolution: {integrity: sha512-nxS1ynzJOmOlHp+iL3FyWqK89GtNL8U8rvlMOsQdTTssxZwCXh8N2NB3GDQOL+YR3XnWyZAxwQixURb+FA74PA==}
@@ -3210,7 +3212,9 @@ snapshots:
       '@mapbox/polyline': 0.2.0
       osrm-text-instructions: 0.13.4
 
-  leaflet.fullscreen@4.0.0: {}
+  leaflet.fullscreen@5.2.1(leaflet@1.9.4):
+    dependencies:
+      leaflet: 1.9.4
 
   leaflet@1.9.4: {}
 
