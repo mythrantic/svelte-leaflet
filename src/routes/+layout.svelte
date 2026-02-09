@@ -87,7 +87,7 @@
 		</div>
 	</div>
 </section>
-
+<div id="samlet-chat"></div> 
 <section class="py-16 bg-orange-500 border-y-8 border-black text-black">
 	<h2 class="text-4xl font-semibold text-center mb-12 font-bold">Frequently Asked Questions</h2>
 	<div class="accordion max-w-4xl mx-auto">
