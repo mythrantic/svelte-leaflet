@@ -1,3 +1,6 @@
+[![Open in Coder](https://coder.valiantlynx.com/open-in-coder.svg)](https://coder.valiantlynx.com/templates/docker/workspace?param.git_repo=git@github.com:mythrantic/svelte-leaflet.git)
+
+
 # Svelte Leaflet
 
 A comprehensive Svelte component library for creating interactive maps with [Leaflet](https://leafletjs.com/). Build beautiful, responsive maps in your SvelteKit applications with ease.
