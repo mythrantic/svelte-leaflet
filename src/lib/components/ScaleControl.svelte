@@ -1,6 +1,6 @@
 <script>
 	import { getContext, onMount } from 'svelte';
-	import L from 'leaflet';
+	import L from '$lib/leaflet';
 
 	const { getMap } = getContext(L);
 

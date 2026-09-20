@@ -1,6 +1,6 @@
 <script>
 	import { getContext, untrack } from 'svelte';
-	import L from 'leaflet';
+	import L from '$lib/leaflet';
 
 	const { getMarker } = getContext(L.Marker);
 

@@ -14,3 +14,5 @@ vite.config.ts.timestamp-*
 .turbo
 .npmrc
 .pnpm-store/
+# Generated declaration files for test harnesses
+/tests/*.d.ts

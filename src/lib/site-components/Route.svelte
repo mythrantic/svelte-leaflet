@@ -1,8 +1,6 @@
 <script>
 	import { LeafletMap, Polyline, Popup, TileLayer, Route } from '$lib/index';
-	import 'leaflet-routing-machine';
-	import 'leaflet.fullscreen';
-	import { routeCoordinates, instructions, summary } from '$lib/components/stores';
+	import { routeStore } from '$lib/components/stores.svelte.js';
 	import Fullscreen from '$lib/components/Fullscreen.svelte';
 
 	const tileUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
@@ -39,9 +37,9 @@
 			{destination}
 			{waypoints}
 			onRouteFound={(route) => {
-				$routeCoordinates = route.coordinates;
-				$instructions = route.instructions;
-				$summary = route.summary;
+				routeStore.routeCoordinates = route.coordinates;
+				routeStore.instructions = route.instructions;
+				routeStore.summary = route.summary;
 			}}
 		>
 			{#snippet children({ routeCoordinates })}
