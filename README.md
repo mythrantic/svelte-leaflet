@@ -1,6 +1,5 @@
 [![Open in Coder](https://coder.valiantlynx.com/open-in-coder.svg)](https://coder.valiantlynx.com/templates/docker/workspace?param.git_repo=git@github.com:mythrantic/svelte-leaflet.git)
 
-
 # Svelte Leaflet
 
 A comprehensive Svelte component library for creating interactive maps with [Leaflet](https://leafletjs.com/). Build beautiful, responsive maps in your SvelteKit applications with ease.
@@ -74,6 +73,63 @@ Don't forget to include Leaflet CSS in your app:
 <!-- In your app.html or layout -->
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 ```
+
+`LeafletMap` is SSR-safe. Leaflet is only loaded in the browser, so you can import and
+render the component normally — no dynamic `import()` inside `onMount` is required.
+
+## Map lifecycle and view control
+
+`LeafletMap` handles the boilerplate that host apps used to repeat:
+
+| Prop           | Type                         | Default   | Description                                                                                           |
+| -------------- | ---------------------------- | --------- | ----------------------------------------------------------------------------------------------------- |
+| `options`      | `L.MapOptions`               | `{}`      | Passed to `L.map()`. `center`/`zoom` props take precedence when provided.                             |
+| `events`       | `string[]`                   | `[]`      | Leaflet events re-dispatched as `CustomEvent`s on the container.                                      |
+| `height`       | `string \| number \| null`   | `'400px'` | Container height. Pass `null` to opt out and size the map with CSS instead.                           |
+| `autoResize`   | `boolean`                    | `true`    | Keep the map in sync with container size via `ResizeObserver` (`invalidateSize`).                     |
+| `center`       | `[lat, lng] \| { lat, lng }` | —         | Reactive map centre. Updates the map when it changes.                                                 |
+| `zoom`         | `number`                     | —         | Reactive zoom level. Updates the map when it changes.                                                 |
+| `bounds`       | points / `L.LatLngBounds`    | —         | Fit the map to these points. Invalid entries are ignored.                                             |
+| `onViewChange` | `(view) => void`             | —         | Called with `{ center, zoom }` when the user pans/zooms. Does not fire for programmatic prop updates. |
+
+```svelte
+<script>
+	import { LeafletMap, TileLayer, Marker } from '@mythrantic/svelte-leaflet';
+
+	let center = $state([59.91, 10.75]);
+	let zoom = $state(11);
+</script>
+
+<LeafletMap {center} {zoom} height="480px" onViewChange={(view) => (zoom = view.zoom)}>
+	<TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+	<Marker latLng={center} />
+</LeafletMap>
+```
+
+**Height contract.** If you pass `height={null}` and the container has no resolvable
+height, the map would be invisibly blank, so a development-only warning tells you how to
+fix it. In production nothing is logged.
+
+## Helpers
+
+```js
+import { LeafletMap, toLatLngBounds, fitToPoints, resolveColor } from '@mythrantic/svelte-leaflet';
+
+// Build bounds from [lat, lng] pairs / { lat, lng } objects / L.LatLng.
+// Invalid entries are skipped; an empty/all-invalid list returns null.
+const bounds = toLatLngBounds([[59.91, 10.75], null, { lat: 60.39, lng: 5.32 }]);
+
+// Fit a map to points without doing the bounds maths. No-op on an empty list.
+fitToPoints(map, points, { padding: [20, 20] });
+
+// Resolve a theme token to a real colour for Leaflet options (SVG attributes
+// reject `var(...)`). Falls back to a sane default instead of throwing.
+resolveColor('var(--brand-color)'); // -> "#00ff00"
+```
+
+Colour options on vector layers (`Circle`, `CircleMarker`, `Polygon`, `Polyline`,
+`Rectangle`) are resolved through `resolveColor`, so you can pass a CSS custom property as
+`color` or `fillColor`.
 
 ## Available Components
 

@@ -1,6 +1,6 @@
 <script>
 	import { getContext, setContext, onMount } from 'svelte';
-	import L from 'leaflet';
+	import L from '$lib/leaflet';
 
 	import EventBridge from '$lib/EventBridge';
 

@@ -1,8 +1,9 @@
 <script>
 	import { getContext, setContext, onMount } from 'svelte';
-	import L from 'leaflet';
+	import L from '$lib/leaflet';
 
 	import EventBridge from '$lib/EventBridge';
+	import { resolveColor } from '$lib/color';
 
 	const { getMap } = getContext(L);
 
@@ -47,7 +48,7 @@
 			circleMarker.setLatLng(latLng);
 			circleMarker.setRadius(radius);
 			circleMarker.setStyle({
-				color: color,
+				color: resolveColor(color),
 				weight: weight,
 				opacity: opacity,
 				lineCap: lineCap,
@@ -55,7 +56,7 @@
 				dashArray: dashArray,
 				dashOffset: dashOffset,
 				fill: fill,
-				fillColor: fillColor,
+				fillColor: resolveColor(fillColor),
 				fillOpacity: fillOpacity,
 				fillRule: fillRule
 			});

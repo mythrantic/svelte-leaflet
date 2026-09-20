@@ -1,7 +1,7 @@
 <script>
 	import ComponentStructure from '$lib/site-components/ComponentStructure.svelte';
 	import Route from '$lib/site-components/Route.svelte';
-	import { routeCoordinates, instructions, summary } from '$lib/components/stores';
+	import { routeStore } from '$lib/components/stores.svelte.js';
 
 	import jsonData from './data.json';
 	import Properties from '$lib/site-components/Properties.svelte';
@@ -66,9 +66,13 @@
 				Route Coordinates
 			</h1>
 			<div class="m-10 shadow-lg rounded-lg bg-gradient-to-bl from-blue-500 to-purple-600 p-5">
-				<p class="font-semibold">Start: <span class="font-normal">{$routeCoordinates[0]}</span></p>
 				<p class="font-semibold">
-					End: <span class="font-normal">{$routeCoordinates[$routeCoordinates.length - 1]}</span>
+					Start: <span class="font-normal">{routeStore.routeCoordinates[0]}</span>
+				</p>
+				<p class="font-semibold">
+					End: <span class="font-normal"
+						>{routeStore.routeCoordinates[routeStore.routeCoordinates.length - 1]}</span
+					>
 				</p>
 			</div>
 
@@ -81,12 +85,12 @@
 				<div class="m-10 shadow-lg rounded-lg bg-gradient-to-r from-green-500 to-blue-600 p-5">
 					<p class="font-semibold">
 						Distance: <span class="font-normal"
-							>{(parseFloat($summary.totalDistance) / 1000).toFixed(2)} km</span
+							>{(parseFloat(routeStore.summary.totalDistance) / 1000).toFixed(2)} km</span
 						>
 					</p>
 					<p class="font-semibold">
 						Duration: <span class="font-normal"
-							>{parseFloat($summary.totalTime / 60).toFixed(2)} min</span
+							>{parseFloat(routeStore.summary.totalTime / 60).toFixed(2)} min</span
 						>
 					</p>
 				</div>
@@ -101,7 +105,7 @@
 				<div
 					class="m-10 shadow-lg rounded-lg bg-gradient-to-r from-pink-500 to-orange-500 p-5 truncate"
 				>
-					{#each $routeCoordinates.filter((_, index) => index < 10) as coordinate}
+					{#each routeStore.routeCoordinates.filter((_, index) => index < 10) as coordinate}
 						<p class="py-1">{coordinate}</p>
 					{/each}
 				</div>
@@ -114,7 +118,7 @@
 					Instructions (First 10)
 				</h1>
 				<div class="m-10 space-y-4">
-					{#each $instructions.filter((_, index) => index < 10) as instruction}
+					{#each routeStore.instructions.filter((_, index) => index < 10) as instruction}
 						<div
 							class="flex flex-col md:flex-row justify-between bg-gradient-to-r from-purple-500 to-pink-500 shadow-lg rounded-lg p-5"
 						>

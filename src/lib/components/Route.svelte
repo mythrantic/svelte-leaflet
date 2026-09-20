@@ -1,8 +1,6 @@
 <script>
 	import { getContext, onMount } from 'svelte';
-	import L from 'leaflet';
-	import 'leaflet-routing-machine';
-	import 'leaflet-routing-machine/dist/leaflet-routing-machine.css';
+	import L from '$lib/leaflet';
 
 	const { getMap } = getContext(L);
 
@@ -22,7 +20,18 @@
 	let waypointsArray = $derived([start, ...waypoints, destination].map((wp) => L.latLng(wp)));
 
 	onMount(() => {
-		if (start.length && destination.length) {
+		let disposed = false;
+
+		// leaflet-routing-machine is a side-effectful plugin that expects a DOM,
+		// so it must only be loaded in the browser.
+		(async () => {
+			if (typeof window === 'undefined') return;
+
+			await import('leaflet-routing-machine');
+			await import('leaflet-routing-machine/dist/leaflet-routing-machine.css');
+
+			if (disposed || !start.length || !destination.length) return;
+
 			router = L.Routing.control({
 				waypoints: waypointsArray,
 				routeWhileDragging: false,
@@ -35,9 +44,10 @@
 				instructions = e.routes[0].instructions;
 				onRouteFound?.(e.routes[0]);
 			});
-		}
+		})();
 
 		return () => {
+			disposed = true;
 			router?.remove();
 		};
 	});

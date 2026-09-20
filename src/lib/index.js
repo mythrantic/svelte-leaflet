@@ -18,9 +18,8 @@ import Tooltip from './components/Tooltip.svelte';
 import Route from './components/Route.svelte';
 import Fullscreen from './components/Fullscreen.svelte';
 
-import LeafletRotatedMarkersExtension from './extensions/RotatedMarkers';
-
-LeafletRotatedMarkersExtension.install();
+export { toLatLngBounds, fitToPoints } from './bounds';
+export { resolveColor } from './color';
 
 export {
 	LeafletMap,
