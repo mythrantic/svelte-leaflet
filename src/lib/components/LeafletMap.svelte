@@ -144,8 +144,32 @@
 	}
 </script>
 
-<div bind:this={container} style="width: 100%;{hasHeight ? ` height: ${toCssSize(height)};` : ''}">
+<div
+	bind:this={container}
+	class="svelte-leaflet-container"
+	style="width: 100%;{hasHeight ? ` height: ${toCssSize(height)};` : ''}">
 	{#if map}
 		{@render children?.()}
 	{/if}
 </div>
+
+<style>
+	/*
+	 * Stacking containment.
+	 *
+	 * Leaflet hardcodes z-index on its internal panes: tile 200, overlay 400,
+	 * shadow 500, marker 600, tooltip 650, popup 700, controls 800. Without a
+	 * stacking context on this container those values escape into the page root
+	 * and paint *above* host UI such as dialogs and sheets (Tailwind's z-50),
+	 * so a map silently covers a modal opened over it. That bug presents as the
+	 * consumer's fault, which is why it is fixed here instead.
+	 *
+	 * `isolation: isolate` makes this element its own stacking context, so the
+	 * panes still layer correctly against each other but can never climb above
+	 * sibling UI.
+	 */
+	.svelte-leaflet-container {
+		isolation: isolate;
+		z-index: 0;
+	}
+</style>
